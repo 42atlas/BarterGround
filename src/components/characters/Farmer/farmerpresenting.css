@@ -1,0 +1,70 @@
+:root {
+  --pixel-size: 9;
+}
+
+body {
+  background: #ffffff;
+}
+
+.Character_farmer {
+  width: calc(14px * var(--pixel-size));
+  height: calc(16px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+}
+
+.Character_spritesheet_farmer {
+  animation: moveSpritesheetfarmer 1s steps(4) infinite;
+  width: calc(110px * var(--pixel-size));
+  position: absolute;
+}
+
+.pixelart {
+  image-rendering: pixelated;
+}
+
+.farmerpresenting {
+  top: calc(-1px * var(--pixel-size));
+  left: calc(-1px * var(--pixel-size));
+}
+
+@keyframes moveSpritesheetfarmer {
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* farmer home*/
+
+.Character_farmerhome {
+  width: calc(42px * var(--pixel-size));
+  height: calc(42px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  /* background: red; */
+}
+
+.Character_spritesheet_farmerhome {
+  animation: moveSpritesheetfarmerhome 1s steps(5) infinite;
+  width: calc(330px * var(--pixel-size));
+  position: absolute;
+}
+
+.farmerhome {
+  top: calc(-42px * var(--pixel-size));
+  left: calc(-3px * var(--pixel-size));
+}
+
+@keyframes moveSpritesheetfarmerhome {
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-62.5%, 0, 0);
+  }
+}

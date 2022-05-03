@@ -1,0 +1,41 @@
+:root {
+  --pixel-size: 9;
+}
+
+body {
+  background: #ffffff;
+}
+
+.pixelart {
+  image-rendering: pixelated;
+}
+
+/* Fat merchant no */
+
+.Character_fatmerchantno {
+  width: calc(19px * var(--pixel-size));
+  height: calc(13px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: 55px auto 0 auto;
+}
+
+.Character_spritesheet_fatmerchantno {
+  animation: moveSpritesheetfatmerchantno 0.5s steps(4) infinite;
+  width: calc(700px * var(--pixel-size));
+  position: absolute;
+}
+
+.fatmerchantno {
+  top: calc(-164px * var(--pixel-size));
+  left: calc(-1px * var(--pixel-size));
+}
+
+@keyframes moveSpritesheetfatmerchantno {
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-15.4%, 0, 0);
+  }
+}

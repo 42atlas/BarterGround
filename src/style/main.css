@@ -1,41 +1,222 @@
 * {
-    font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
 }
 
-.main-container {
-    display:flex;
-    flex-direction: column;    
+/* @media screen and (max-width: 480px) {
+  .nes-container {
+    width: 360px;
+    height: 820px;
+  }
+  .main-container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     align-self: center;
     align-content: center;
+  }
 }
 
+@media screen and (max-width: 768px) and (min-width: 481px) {
+  .nes-container {
+    width: 700px;
+    height: 820px;
+  }
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+  }
+}
+
+@media screen and (min-width: 1005px) {
+  .nes-container {
+    width: 1000px;
+    height: 820px;
+  }
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+  }
+} */
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+}
 
 .nes-container {
-    position: relative;
-    padding: 1.5rem 2rem;
-    border-color: #000;
-    border-style: solid;
-    border-width: 4px;
-    margin-top:20px;
-    width: 800px;
-    height: 800px;
+  position: relative;
+  padding: 1.5rem 2rem;
+  border-color: #000;
+  border-style: solid;
+  border-width: 4px;
+  margin-top: 20px;
+  width: 80%;
+  height: 80%;
 }
 
-.nes-container.with-title>.title {
-    display: table;
-    padding: 0 .5rem;
-    margin: -1.8rem 0 1rem;
-    font-size: 1rem;
-    background-color: #fff;
+.char-div {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
+
+#char-container {
+  /* display: flex;
+  flex-direction: column; */
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
+      14 0,
+    pointer;
+  align-items: baseline;
+  height: 193.2px;
+  width: 184px;
+}
+
+#fat-container {
+  height: 193.2px;
+  width: 184px;
+}
+
+.internal-container {
+  display: flex !important;
+  flex-direction: column;
+}
+
+/* .nes-container.with-title > .title {
+  display: table;
+  padding: 0 0.5rem;
+  margin: -1.8rem 0 1rem;
+  font-size: 1rem;
+  background-color: #fff;
+} */
 
 h3 {
-    display: block;
-    font-size: 1.17em;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
+  display: block;
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+.nes-container.is-centered {
+  text-align: center;
+}
+
+.main-img {
+  width: 400px;
+  height: 300px;
+  align-self: center;
+  margin: 200px;
+}
+
+.link {
+  display: flex;
+  width: 100%;
+}
+
+/* .boyrunning {
+  display: flex;
+  transition: translateX(100%) 3s;
+} */
+
+#error {
+  color: #ce372b;
+  display: flex;
+  text-transform: uppercase;
+  align-self: flex-end;
+  flex-wrap: wrap;
+}
+
+#flex-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
+}
+
+.form-register {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: stretch;
+  max-width: 908px;
+}
+.dimension-min {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: 100%;
+}
+.dimension-max {
+  width: 100%;
+  max-width: 637px;
+  display: flex;
+  flex-direction: column;
+}
+
+.loader {
+  margin: 40px auto;
+}
+
+.margin {
+  margin: 100px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.home-container {
+  display: flex;
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+}
+
+#alert {
+  width: 200px;
+  margin: 20px 80px 10px 80px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+}
+
+.infinite-img-x {
+  display: flex;
+  flex-direction: row;
+}
+
+.infinite-img-y {
+  display: flex;
+  flex-direction: column;
+}
+
+.infinite-msg-y {
+  display: flex;
+  flex-direction: column;
+}
+
+.send-msg {
+  display: flex;
+}
+
+.offers-img-container {
+  display: flex;
+}
+
+.acceptoffer {
+  display: flex;
+  justify-content: space-between;
 }

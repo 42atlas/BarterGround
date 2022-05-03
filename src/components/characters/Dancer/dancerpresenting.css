@@ -1,0 +1,66 @@
+:root {
+  --pixel-size: 9;
+}
+
+.Character_dancer {
+  width: calc(12px * var(--pixel-size));
+  height: calc(12px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+}
+
+.Character_spritesheet_dancer {
+  animation: moveSpritesheetdancer 1s steps(8) infinite;
+  width: calc(120px * var(--pixel-size));
+  position: absolute;
+}
+
+.pixelart {
+  image-rendering: pixelated;
+}
+
+.dancerpresenting {
+  top: calc(-12px * var(--pixel-size));
+  left: calc(-1px * var(--pixel-size));
+}
+
+@keyframes moveSpritesheetdancer {
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-80%, 0, 0);
+  }
+}
+
+/* dancer home */
+
+.Character_dancerhome {
+  width: calc(36px * var(--pixel-size));
+  height: calc(36px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  /* background: red; */
+}
+
+.Character_spritesheet_dancerhome {
+  animation: moveSpritesheetdancerhome 1s steps(10) infinite;
+  width: calc(360px * var(--pixel-size));
+  position: absolute;
+}
+
+.dancerhome {
+  top: calc(-75px * var(--pixel-size));
+  left: calc(-3px * var(--pixel-size));
+}
+
+@keyframes moveSpritesheetdancerhome {
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
