@@ -1,0 +1,9 @@
+{
+  "short_name": "Barter RPG",
+  "name": "Barter RPG",
+
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

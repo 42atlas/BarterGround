@@ -1,0 +1,67 @@
+:root {
+  --pixel-size: 9;
+}
+
+body {
+  background: #ffffff;
+}
+
+.Character_bard {
+  width: calc(12px * var(--pixel-size));
+  height: calc(15px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+}
+
+.Character_spritesheet_bard {
+  animation: moveSpritesheetbard 3s steps(15) infinite;
+  width: calc(200px * var(--pixel-size));
+  position: absolute;
+}
+
+.pixelart {
+  image-rendering: pixelated;
+}
+
+.bardpresenting {
+  top: calc(-13.4px * var(--pixel-size));
+  left: calc(-1px * var(--pixel-size));
+}
+@keyframes moveSpritesheetbard {
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+/* bardhome */
+
+.Character_bardhome {
+  width: calc(37.5px * var(--pixel-size));
+  height: calc(45px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+}
+
+.Character_spritesheet_bardhome {
+  animation: moveSpritesheetbardhome 2s steps(11) infinite;
+  width: calc(600px * var(--pixel-size));
+  position: absolute;
+}
+
+.bardhomepresenting {
+  top: calc(-120.6px * var(--pixel-size));
+  left: calc(-0.6px * var(--pixel-size));
+}
+@keyframes moveSpritesheetbardhome {
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-73.5%, 0, 0);
+  }
+}

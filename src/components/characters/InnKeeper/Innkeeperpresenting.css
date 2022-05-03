@@ -1,0 +1,70 @@
+:root {
+  --pixel-size: 9;
+}
+
+body {
+  background: #ffffff;
+}
+
+.Character_innkeeper {
+  width: calc(15px * var(--pixel-size));
+  height: calc(16px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+}
+
+.Character_spritesheet_innkeeper {
+  animation: moveSpritesheetinnkeeper 2s steps(11) infinite;
+  width: calc(150px * var(--pixel-size));
+  position: absolute;
+}
+
+.pixelart {
+  image-rendering: pixelated;
+}
+
+.innkeeperpresenting {
+  left: calc(-1px * var(--pixel-size));
+  top: calc(-3px * var(--pixel-size));
+}
+
+@keyframes moveSpritesheetinnkeeper {
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+/* innkeeper home */
+
+.Character_innkeeperhome {
+  width: calc(45px * var(--pixel-size));
+  height: calc(42px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  /* background: red; */
+}
+
+.Character_spritesheet_innkeeperhome {
+  animation: moveSpritesheetinnkeeperhome 1s steps(6) infinite;
+  width: calc(450px * var(--pixel-size));
+  position: absolute;
+}
+
+.innkeeperhome {
+  left: calc(-3px * var(--pixel-size));
+  top: calc(-123px * var(--pixel-size));
+}
+
+@keyframes moveSpritesheetinnkeeperhome {
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-54.5%, 0, 0);
+  }
+}

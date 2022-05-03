@@ -1,0 +1,64 @@
+:root {
+  --pixel-size: 9;
+}
+
+.Character_builder {
+  width: calc(15.6px * var(--pixel-size));
+  height: calc(12.7px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+}
+
+.Character_spritesheet_builder {
+  animation: moveSpritesheetbuilder 1s steps(4) infinite;
+  width: calc(110px * var(--pixel-size));
+  position: absolute;
+}
+
+.pixelart {
+  image-rendering: pixelated;
+}
+
+.builderpresenting {
+  top: calc(-1px * var(--pixel-size));
+  left: calc(-0.2px * var(--pixel-size));
+}
+@keyframes moveSpritesheetbuilder {
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* builder home */
+
+.Character_builderhome {
+  width: calc(46.8px * var(--pixel-size));
+  height: calc(38.1px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  /* background: red; */
+}
+
+.Character_spritesheet_builderhome {
+  animation: moveSpritesheetbuilderhome 1s steps(8) infinite;
+  width: calc(330px * var(--pixel-size));
+  position: absolute;
+}
+
+.builderhome {
+  top: calc(-46.5px * var(--pixel-size));
+  left: calc(-0.6px * var(--pixel-size));
+}
+@keyframes moveSpritesheetbuilderhome {
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}

@@ -1,0 +1,70 @@
+:root {
+  --pixel-size: 9;
+}
+
+body {
+  background: #ffffff;
+}
+
+.Character_fisherman {
+  width: calc(14px * var(--pixel-size));
+  height: calc(14px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+}
+
+.Character_spritesheet_fisherman {
+  animation: moveSpritesheetfisherman 1s steps(7) infinite;
+  width: calc(200px * var(--pixel-size));
+  position: absolute;
+}
+
+.pixelart {
+  image-rendering: pixelated;
+}
+
+.fishermanpresenting {
+  top: calc(-36px * var(--pixel-size));
+  left: calc(-1px * var(--pixel-size));
+}
+
+@keyframes moveSpritesheetfisherman {
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-87%, 0, 0);
+  }
+}
+
+/* fisherman home */
+
+.Character_fishermanhome {
+  width: calc(72px * var(--pixel-size));
+  height: calc(45px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  /* background: red; */
+}
+
+.Character_spritesheet_fishermanhome {
+  animation: moveSpritesheetfishermanhome 1s steps(7) infinite;
+  width: calc(600px * var(--pixel-size));
+  position: absolute;
+}
+
+.fishermanhome {
+  top: calc(-180px * var(--pixel-size));
+  left: calc(-2.4px * var(--pixel-size));
+}
+
+@keyframes moveSpritesheetfishermanhome {
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-87%, 0, 0);
+  }
+}
