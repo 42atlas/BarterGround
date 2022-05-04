@@ -52,7 +52,7 @@ const Login = () => {
 
   return (
     <div className="main-container">
-      <div className="nes-container is-centered with-title">
+      <div className="nes-container is-centered with-title" id="landing">
         <h3 className="title"> Login </h3>
         <div className="internal-container">
           <h1>PLAYER DATA:</h1>
@@ -60,44 +60,43 @@ const Login = () => {
 
           {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
           <br></br>
-          <div class="dimension-min">
-            <div class="dimension-max">
-              <label htmlFor="email" className="form-label">
-                email:
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="e-mail"
-                className="nes-input"
-                value={email}
-                onChange={handleChange}
-              />
-              <br></br>
-              <label htmlFor="password" className="form-label">
-                Secret Password:
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="pwd"
-                className="nes-input"
-                value={password}
-                onChange={handleChange}
-              />
-              <br></br>
-              <button
-                type="submit"
-                className="nes-btn is-primary"
-                onClick={handleSubmit}
-              >
-                OK
-              </button>
-            </div>
-          </div>
+
+          <label htmlFor="email" className="form-label">
+            email:
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="e-mail"
+            className="nes-input"
+            value={email}
+            onChange={handleChange}
+          />
+          <br></br>
+          <label htmlFor="password" className="form-label">
+            Secret Password:
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="pwd"
+            className="nes-input"
+            value={password}
+            onChange={handleChange}
+          />
+          <br></br>
+          <button
+            type="submit"
+            className="nes-btn is-primary"
+            onClick={handleSubmit}
+          >
+            OK
+          </button>
         </div>
       </div>
     </div>
+
+
   );
 };
 

@@ -19,7 +19,7 @@ const AuthState = ({ children }) => {
       try {
         setLoading(true);
         const { data } = await axios.get(
-          `${process.env.REACT_APP_BLOG_API_URL}/auth/me`,
+          `${process.env.BARTERGROUND_API_URL}/auth/me`,
           {
             headers: {
               Authorization: token,
@@ -45,7 +45,7 @@ const AuthState = ({ children }) => {
       const {
         data: { token },
       } = await axios.post(
-        `${process.env.REACT_APP_BLOG_API_URL}/auth/signup`,
+        `${process.env.BARTERGROUND_API_URL}/auth/signup`,
         formData
       );
       localStorage.setItem("token", token);
@@ -65,7 +65,7 @@ const AuthState = ({ children }) => {
       const {
         data: { token },
       } = await axios.post(
-        `${process.env.REACT_APP_BLOG_API_URL}/auth/signin`,
+        `${process.env.BARTERGROUND_API_URL}/auth/signin`,
         formData
       );
       localStorage.setItem("token", token);
