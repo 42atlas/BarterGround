@@ -7,12 +7,12 @@ const LandingPage = () => {
   const navigate = useNavigate();
   return (
     <div class="main-container">
-      <div class="nes-container is-centered with-title">
+      <div class="nes-container is-centered with-title" id="landing">
         <h3 class="title"> BarterGround </h3>
         <div class="internal-container">
           <img
             class="main-img"
-            src={require("../images/logo.webp")}
+            src={require("../images/exchange x10.gif")}
             alt="barter pixel art"
           />
           <div class="dimension-min">

@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import Loading from "./Loading";
 import ReactDOM from "react-dom";
-import { useRanger } from "react-ranger";
+
 
 const StoreItem = () => {
   const navigate = useNavigate();
@@ -27,13 +27,13 @@ const StoreItem = () => {
     }
   };
 
-  const { getTrackProps, handles } = useRanger({
-    min: 0,
-    max: 4,
-    stepSize: 1,
-    values,
-    onChange: setValues,
-  });
+  /*   const { getTrackProps, handles } = useRanger({
+      min: 0,
+      max: 4,
+      stepSize: 1,
+      values,
+      onChange: setValues,
+    }); */
 
   return (
     <div className="main-container">
@@ -62,26 +62,26 @@ const StoreItem = () => {
           </div>
 
           <progress
-            {...getTrackProps({
-              style: {
-                className: `nes-progress ${status}`,
-                value: `${values}`,
-                max: "4",
-              },
-            })}
+          /* {...getTrackProps({
+            style: {
+              className: `nes-progress ${status}`,
+              value: `${values}`,
+              max: "4",
+            },
+          })} */
           >
-            {handles.map(({ getHandleProps }) => (
+            {/* {handles.map(({ getHandleProps }) => (
               <button
                 {...getHandleProps({
                   style: {
                     class: "nes-btn",
                     width: "50px",
                     height: "50px",
-                    /* outline: "none", */
+                    outline: "none",
                   },
                 })}
               />
-            ))}
+            ))} */}
           </progress>
 
           <label for="textarea_field">Description</label>
@@ -103,7 +103,7 @@ const StoreItem = () => {
             <button
               type="button"
               class="nes-btn is-success"
-              /* onClick={placeOffer} */
+            /* onClick={placeOffer} */
             >
               OK
             </button>

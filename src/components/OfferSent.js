@@ -74,14 +74,14 @@ const OfferSent = () => {
             <button
               type="button"
               class="nes-btn is-warning"
-              /* onClick={modifyOffer} */
+            /* onClick={modifyOffer} */
             >
               Modify
             </button>
             <button
               type="button"
               class="nes-btn is-error"
-              /* onClick={removeOffer} */
+            /* onClick={removeOffer} */
             >
               Decline
             </button>
