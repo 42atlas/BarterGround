@@ -5,6 +5,7 @@ import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useState } from "react";
 import Loading from "./Loading";
+import KeysIcon from "./characters/iconsShadow/keysicon";
 
 /*import { useAuth } from "../context/AuthContext"; */
 /* import Loading from "./Loading"; */
@@ -24,7 +25,7 @@ const Login = () => {
   const handleSubmit = () => {
     if (!email || !password) {
       setError(true);
-      setErrorMessage("NO NO NO THE FIELDS CANNOT BE EMPTY!");
+      setErrorMessage("NO DATA NO PARTY!");
       return;
     } else {
       setError(false);
@@ -57,6 +58,8 @@ const Login = () => {
         <div className="internal-container">
           <h1>PLAYER DATA:</h1>
           <br></br>
+
+          <KeysIcon />
 
           {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
           <br></br>
@@ -95,8 +98,6 @@ const Login = () => {
         </div>
       </div>
     </div>
-
-
   );
 };
 

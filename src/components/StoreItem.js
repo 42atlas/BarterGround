@@ -7,7 +7,6 @@ import { useState } from "react";
 import Loading from "./Loading";
 import ReactDOM from "react-dom";
 
-
 const StoreItem = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState([2]);
@@ -44,16 +43,16 @@ const StoreItem = () => {
           <div className="offers-img-container">
             <div className="nes-container is-rounded">
               <img
-                class="main-img"
+                className="main-img"
                 src={require("../images/logo.webp")} /* get img */
                 alt="barter pixel art"
               />
               <div className="main-container">
                 <label>
-                  <input type="checkbox" class="nes-checkbox" />
+                  <input type="checkbox" className="nes-checkbox" />
                   <span>Is Listed</span>
                 </label>
-                <label class="nes-btn">
+                <label className="nes-btn">
                   <span>Select your Image</span>
                   <input type="file" />
                 </label>
@@ -87,7 +86,7 @@ const StoreItem = () => {
           <label for="textarea_field">Description</label>
           <textarea
             id="textarea_field"
-            class="nes-textarea"
+            className="nes-textarea"
             spellcheck="false"
           ></textarea>
 
@@ -102,8 +101,8 @@ const StoreItem = () => {
           <div className="acceptoffer">
             <button
               type="button"
-              class="nes-btn is-success"
-            /* onClick={placeOffer} */
+              className="nes-btn is-success"
+              /* onClick={placeOffer} */
             >
               OK
             </button>
@@ -114,21 +113,21 @@ const StoreItem = () => {
         <div className="buttons-container">
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/exchange")}
           >
             Exchange center
           </button>
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/home")}
           >
             Home
           </button>
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/items")}
           >
             Your Items

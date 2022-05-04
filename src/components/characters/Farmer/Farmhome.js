@@ -5,9 +5,9 @@ import "./farmerpresenting.css";
 
 const FarmerHome = () => {
   return (
-    <div class="Character_farmerhome">
+    <div className="Character_farmerhome">
       <img
-        class="Character_spritesheet_farmerhome pixelart farmerhome"
+        className="Character_spritesheet_farmerhome pixelart farmerhome"
         src={require("./farmer-sprite-sheet.png")}
         alt="FarmerHome"
       />

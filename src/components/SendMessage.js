@@ -21,7 +21,7 @@ const SendMessage = () => {
           </div>
           <button
             type="button"
-            class="nes-btn is-success"
+            className="nes-btn is-success"
             /* onClick={sendMessage} */
           >
             Send Message
@@ -32,21 +32,21 @@ const SendMessage = () => {
         <div className="buttons-container">
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/home")}
           >
             Home
           </button>
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/offers")}
           >
             Offers
           </button>
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/messages")}
           >
             Messages

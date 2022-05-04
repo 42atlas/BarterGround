@@ -5,9 +5,9 @@ import "./Innkeeperpresenting.css";
 
 const InnKeeperHome = () => {
   return (
-    <div class="Character_innkeeperhome">
+    <div className="Character_innkeeperhome">
       <img
-        class="Character_spritesheet_innkeeperhome pixelart innkeeperhome"
+        className="Character_spritesheet_innkeeperhome pixelart innkeeperhome"
         src={require("./inn-keeper-sprite-sheet.png")}
         alt="Inn-Keeper Home"
       />

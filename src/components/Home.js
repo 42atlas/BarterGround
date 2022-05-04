@@ -37,21 +37,21 @@ const Home = () => {
           <h1>{/* {name} */}NAME</h1>
           <div className="home-container">
             <div
-              class="nes-container is-rounded"
+              className="nes-container is-rounded"
               id="alert"
               onClick={navigate("/offers")}
             >
-              <span class={alertOffers}>{offers} New Offers!!</span>
+              <span className={alertOffers}>{offers} New Offers!!</span>
             </div>
             <div>
               {/* {char} */} <OldLadyHome />
             </div>
             <div
-              class="nes-container is-rounded"
+              className="nes-container is-rounded"
               id="alert"
               onClick={navigate("/messages")}
             >
-              <span class={alertMessages}>{messages} New Messages!!</span>
+              <span className={alertMessages}>{messages} New Messages!!</span>
             </div>
           </div>
         </div>
@@ -60,21 +60,21 @@ const Home = () => {
         <div className="buttons-container">
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/items")}
           >
             Items
           </button>
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/exchange")}
           >
             Exchange
           </button>
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/messages")}
           >
             Messages

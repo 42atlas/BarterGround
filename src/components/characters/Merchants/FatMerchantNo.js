@@ -5,9 +5,9 @@ import "./merchantspresenting.css";
 
 const FatMerchantNo = () => {
   return (
-    <div class="Character_fatmerchantno">
+    <div className="Character_fatmerchantno">
       <img
-        class="Character_spritesheet_fatmerchantno pixelart fatmerchantno"
+        className="Character_spritesheet_fatmerchantno pixelart fatmerchantno"
         src={require("./merchants-sprite-sheet.png")}
         alt="FatMerchantNo"
       />

@@ -14,7 +14,7 @@ const Items = () => {
       <div className="nes-container is-centered with-title">
         <h3 className="title"> Your Treasure </h3>
         <img
-          class="main-img"
+          className="main-img"
           src={require("../images/logo.webp")}
           alt="barter pixel art"
         />
@@ -24,7 +24,7 @@ const Items = () => {
           </div>
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/storeitem")}
           >
             Store an Item
@@ -35,21 +35,21 @@ const Items = () => {
         <div className="buttons-container">
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/offers")}
           >
             Offers
           </button>
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/exchange")}
           >
             Exchange
           </button>
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/messages")}
           >
             Messages

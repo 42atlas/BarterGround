@@ -5,9 +5,9 @@ import "./fishermanpresenting.css";
 
 const FishermanHome = () => {
   return (
-    <div class="Character_fishermanhome">
+    <div className="Character_fishermanhome">
       <img
-        class="Character_spritesheet_fishermanhome pixelart fishermanhome"
+        className="Character_spritesheet_fishermanhome pixelart fishermanhome"
         src={require("./fisherman-sprite-sheet.png")}
         alt="Fisherman Home"
       />
