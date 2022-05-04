@@ -5,9 +5,9 @@ import "./oldladypresenting.css";
 
 const OldLadyHome = () => {
   return (
-    <div class="Character_oldladyhome">
+    <div className="Character_oldladyhome">
       <img
-        class="Character_spritesheet_oldladyhome pixelart oldladyhome"
+        className="Character_spritesheet_oldladyhome pixelart oldladyhome"
         src={require("./old-lady-sprite-sheet.png")}
         alt="OldLady Home"
       />

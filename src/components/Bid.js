@@ -32,7 +32,7 @@ const Bid = () => {
         <div className="internal-container">
           <div className="nes-container is-rounded">
             <img
-              class="main-img"
+              className="main-img"
               src={require("../images/logo.webp")}
               alt="barter pixel art"
             />
@@ -52,7 +52,11 @@ const Bid = () => {
             {/* select / type user */}
             {/* creare elemento per immagini e collegarlo ad API / msg-containers click on msg go to msg send/edit*/}
           </div>
-          <button type="button" class="nes-btn is-success" onClick={doOffer}>
+          <button
+            type="button"
+            className="nes-btn is-success"
+            onClick={doOffer}
+          >
             Make the Offer
           </button>
         </div>
@@ -62,21 +66,21 @@ const Bid = () => {
         <div className="buttons-container">
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/sendmessage")}
           >
             Send a Message to (name of the user in case)
           </button>
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/exchange")}
           >
             Back to Exchange
           </button>
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/items")}
           >
             Your Items

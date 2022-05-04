@@ -25,7 +25,7 @@ const loaderVariants = {
 const Loading = () => {
   return (
     <>
-      <div class="margin">
+      <div className="margin">
         <motion.div
           className="loader"
           variants={loaderVariants}

@@ -1,0 +1,41 @@
+:root {
+  --pixel-size: 9;
+}
+
+body {
+  background: #ffffff;
+}
+
+.Icon_keys {
+  width: calc(25px * var(--pixel-size));
+  height: calc(25px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  /*  background: red; */
+}
+
+.Icon_spritesheet_keys {
+  /*  animation: moveSpritesheetinnkeeper 0.1s steps(1) infinite; */
+  width: calc(400px * var(--pixel-size));
+  position: absolute;
+}
+
+.pixelart {
+  image-rendering: pixelated;
+}
+
+.keys {
+  left: calc(-250px * var(--pixel-size));
+  top: calc(-276px * var(--pixel-size));
+}
+
+/* @keyframes moveSpritesheetinnkeeper {
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+ */

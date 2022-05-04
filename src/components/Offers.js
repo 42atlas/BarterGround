@@ -14,7 +14,7 @@ const Offers = () => {
         <h3 className="title"> Trade Center </h3>
         <div className="internal-container">
           <img
-            class="main-img"
+            className="main-img"
             src={require("../images/logo.webp")}
             alt="barter pixel art"
           />
@@ -37,21 +37,21 @@ const Offers = () => {
         <div className="buttons-container">
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/messages")}
           >
             Messages
           </button>
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/exchange")}
           >
             Exchange
           </button>
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/home")}
           >
             Home

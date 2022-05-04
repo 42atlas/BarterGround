@@ -5,9 +5,9 @@ import "./minerpresenting.css";
 
 const MinerPresenting = () => {
   return (
-    <div class="Character_miner">
+    <div className="Character_miner">
       <img
-        class="Character_spritesheet_miner pixelart minerpresenting"
+        className="Character_spritesheet_miner pixelart minerpresenting"
         src={require("./miner-sprite-sheet.png")}
         alt="Miner"
       />

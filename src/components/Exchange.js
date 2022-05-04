@@ -12,11 +12,11 @@ const Exchange = () => {
       <div className="nes-container is-centered with-title">
         <h3 className="title"> Exchange </h3>
         <div className="internal-container">
-          <div class="nes-field">
+          <div className="nes-field">
             <input
               type="text"
               id="inline_field"
-              class="nes-input"
+              className="nes-input"
               placeholder="Search"
             />
           </div>
@@ -37,21 +37,21 @@ const Exchange = () => {
           <div className="buttons-container">
             <button
               type="button"
-              class="nes-btn is-primary"
+              className="nes-btn is-primary"
               onClick={navigate("/storeitem")}
             >
               List your Item
             </button>
             <button
               type="button"
-              class="nes-btn is-primary"
+              className="nes-btn is-primary"
               onClick={navigate("/home")}
             >
               Home
             </button>
             <button
               type="button"
-              class="nes-btn is-primary"
+              className="nes-btn is-primary"
               onClick={navigate("/messages")}
             >
               Messages

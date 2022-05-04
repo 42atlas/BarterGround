@@ -47,7 +47,7 @@ const OfferSent = () => {
           <div className="offers-img-container">
             <div className="nes-container is-rounded">
               <img
-                class="main-img"
+                className="main-img"
                 src={require("../images/logo.webp")} /* get img */
                 alt="barter pixel art"
               />
@@ -73,15 +73,15 @@ const OfferSent = () => {
           <div className="acceptoffer">
             <button
               type="button"
-              class="nes-btn is-warning"
-            /* onClick={modifyOffer} */
+              className="nes-btn is-warning"
+              /* onClick={modifyOffer} */
             >
               Modify
             </button>
             <button
               type="button"
-              class="nes-btn is-error"
-            /* onClick={removeOffer} */
+              className="nes-btn is-error"
+              /* onClick={removeOffer} */
             >
               Decline
             </button>
@@ -92,21 +92,21 @@ const OfferSent = () => {
         <div className="buttons-container">
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/sendmessage")}
           >
             Send a Message to (name of the user in case)
           </button>
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/offers")}
           >
             Back to Offers
           </button>
           <button
             type="button"
-            class="nes-btn is-primary"
+            className="nes-btn is-primary"
             onClick={navigate("/home")}
           >
             Home

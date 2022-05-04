@@ -5,9 +5,9 @@ import "./builderpresenting.css";
 
 const BuilderHome = () => {
   return (
-    <div class="Character_builderhome">
+    <div className="Character_builderhome">
       <img
-        class="Character_spritesheet_builderhome pixelart builderhome"
+        className="Character_spritesheet_builderhome pixelart builderhome"
         src={require("./builder-sprite-sheet.png")}
         alt="Builder Home"
       />

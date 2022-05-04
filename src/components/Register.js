@@ -1,5 +1,5 @@
 /* import { Link, NavLink, Outlet } from "react-router-dom"; */
-import React from "react";
+import React, { useState } from "react";
 import "../style/main.css";
 import "nes.css/css/nes.min.css";
 import BardPresenting from "./characters/Bard/BardPresenting";
@@ -14,45 +14,62 @@ import MinerPresenting from "./characters/Miner/MinerPresenting";
 import OldLadyPresenting from "./characters/OldLady/OldLadyPresenting";
 import OldManPresenting from "./characters/OldMan/OldManPresenting";
 import VillageGirlPresenting from "./characters/VillageGirl/VillageGirlPresenting";
-import { useState } from "react";
-import { useNavigate, Navigate } from "react-router-dom";
+
+import { Navigate } from "react-router-dom";
 import ErrorMessage from "./ErrorMessage/ErrorMessage";
-/*import { useAuth } from "../context/AuthContext"; */
-/* import Loading from "./Loading"; */
+import { useAuth } from "../context/AuthContext";
+import Loading from "./Loading";
 
 const Register = () => {
   const [error, setError] = useState(false);
   const [selected, setSelected] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [classField, setClassField] = useState("nes-input");
-  const navigate = useNavigate();
-  const [{ char, name, email, password }, setFormState] = useState({
-    char: "",
+
+  const [{ character, name, email, password }, setFormState] = useState({
+    character: "",
     name: "",
     email: "",
     password: "",
   });
 
-  /*const { isAuthenticated, loading, registerUser } = useAuth(); */
+  const { isAuthenticated, loading, registerUser } = useAuth();
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-  };
 
   const handleChangeChar = (e) => {
     setFormState((prev) => ({
       ...prev,
-      char:
-        e.target.getAttribute("char") ||
-        e.target.parentNode.parentNode.getAttribute("char"),
+      character:
+        e.target.getAttribute("character") ||
+        e.target.parentNode.parentNode.getAttribute("character"),
     }));
     setSelected(
-      e.target.getAttribute("char") ||
-        e.target.parentNode.parentNode.getAttribute("char")
+      e.target.getAttribute("character") ||
+        e.target.parentNode.parentNode.getAttribute("character")
     );
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!name || !email || !password)
+      return (
+        setError(true),
+        setErrorMessage("NO NO NO THE FIELDS CANNOT BE EMPTY!"),
+        setClassField("nes-input is-error")
+      );
+    await registerUser({ name, email, password, character });
+  };
+
+  if (isAuthenticated) return <Navigate to="/home" replace />;
+  /* if (!isAuthenticated) return(
+    setError(true),
+    setErrorMessage("NO NO NO THIS EMAIL IS ALREADY REGISTERED!")); */
+
+  if (loading) return <Loading />;
+
+  /*   const handleSubmit = () => {
     if (!name || !email || !password) {
       setError(true);
       setErrorMessage("NO NO NO THE FIELDS CANNOT BE EMPTY!");
@@ -61,38 +78,20 @@ const Register = () => {
     } else {
       setError(false);
     }
-  };
-
-  /*   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!name || !email || !password) return 
-      setError(true)
-      setErrorMessage("NO NO NO THE FIELDS CANNOT BE EMPTY!")
-     await registerUser({ name, email, password }); 
-  };
-  
-
-  if (isAuthenticated) {
-  setError(false);
-    return <Navigate to="/protected/home" replace />;
-  } else {
-  setError(true)
-        setErrorMessage("NO NO NO THIS EMAIL IS ALREADY REGISTERED!")
-  }
-  if (loading) return <Loading />; */
+  }; */
 
   return (
     <div className="main-container">
       <div className="nes-container is-centered with-title">
         <h3 className="title"> Register </h3>
-        <div class="internal-container">
+        <div className="internal-container">
           Choose your character:
           <div className="char-div">
             <div
               className="nes-container is-centered with-title"
               id="char-container"
-              value={char}
-              char="Bard"
+              value={character}
+              character="Bard"
               onClick={handleChangeChar}
               style={{ color: selected === "Bard" ? "#92cc41" : "" }}
             >
@@ -103,8 +102,8 @@ const Register = () => {
               className="nes-container is-centered with-title"
               id="char-container"
               onClick={handleChangeChar}
-              value={char}
-              char="InnKeeper"
+              value={character}
+              character="InnKeeper"
               style={{ color: selected === "InnKeeper" ? "#92cc41" : "" }}
             >
               <h3 className="title"> Inn Keeper </h3>
@@ -114,8 +113,8 @@ const Register = () => {
               className="nes-container is-centered with-title"
               id="char-container"
               onClick={handleChangeChar}
-              value={char}
-              char="Builder"
+              value={character}
+              character="Builder"
               style={{ color: selected === "Builder" ? "#92cc41" : "" }}
             >
               <h3 className="title"> Builder </h3>
@@ -125,8 +124,8 @@ const Register = () => {
               className="nes-container is-centered with-title"
               id="char-container"
               onClick={handleChangeChar}
-              value={char}
-              char="Dancer"
+              value={character}
+              character="Dancer"
               style={{ color: selected === "Dancer" ? "#92cc41" : "" }}
             >
               <h3 className="title"> Dancer </h3>
@@ -136,8 +135,8 @@ const Register = () => {
               className="nes-container is-centered with-title"
               id="char-container"
               onClick={handleChangeChar}
-              value={char}
-              char="Farmer"
+              value={character}
+              character="Farmer"
               style={{ color: selected === "Farmer" ? "#92cc41" : "" }}
             >
               <h3 className="title"> Farmer </h3>
@@ -147,8 +146,8 @@ const Register = () => {
               className="nes-container with-title"
               id="char-container"
               onClick={handleChangeChar}
-              value={char}
-              char="Fisherman"
+              value={character}
+              character="Fisherman"
               style={{ color: selected === "Fisherman" ? "#92cc41" : "" }}
             >
               <h3 className="title"> Fisherman </h3>
@@ -160,8 +159,8 @@ const Register = () => {
               className="nes-container with-title"
               id="char-container"
               onClick={handleChangeChar}
-              value={char}
-              char="Girl"
+              value={character}
+              character="Girl"
               style={{ color: selected === "Girl" ? "#92cc41" : "" }}
             >
               <h3 className="title"> Girl </h3>
@@ -171,8 +170,8 @@ const Register = () => {
               className="nes-container with-title"
               id="char-container"
               onClick={handleChangeChar}
-              value={char}
-              char="Boy"
+              value={character}
+              character="Boy"
               style={{ color: selected === "Boy" ? "#92cc41" : "" }}
             >
               <h3 className="title"> Boy </h3>
@@ -182,8 +181,8 @@ const Register = () => {
               className="nes-container with-title"
               id="char-container"
               onClick={handleChangeChar}
-              value={char}
-              char="Miner"
+              value={character}
+              character="Miner"
               style={{ color: selected === "Miner" ? "#92cc41" : "" }}
             >
               <h3 className="title"> Miner </h3>
@@ -193,8 +192,8 @@ const Register = () => {
               className="nes-container with-title"
               id="char-container"
               onClick={handleChangeChar}
-              value={char}
-              char="OldLady"
+              value={character}
+              character="OldLady"
               style={{ color: selected === "OldLady" ? "#92cc41" : "" }}
             >
               <h3 className="title"> Old Lady </h3>
@@ -204,8 +203,8 @@ const Register = () => {
               className="nes-container with-title"
               id="char-container"
               onClick={handleChangeChar}
-              value={char}
-              char="OldMan"
+              value={character}
+              character="OldMan"
               style={{ color: selected === "OldMan" ? "#92cc41" : "" }}
             >
               <h3 className="title"> Old Man </h3>
@@ -215,8 +214,8 @@ const Register = () => {
               className="nes-container with-title"
               id="char-container"
               onClick={handleChangeChar}
-              value={char}
-              char="VillageGirl"
+              value={character}
+              character="VillageGirl"
               style={{ color: selected === "VillageGirl" ? "#92cc41" : "" }}
             >
               <h3 className="title"> Village Girl </h3>
@@ -224,10 +223,10 @@ const Register = () => {
             </div>
           </div>
           <br></br>
-          <div class="internal-container">
+          <div className="internal-container">
             {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
-            <div class="form-register">
-              <div class="nes-field">
+            <div className="form-register">
+              <div className="nes-field">
                 <label for="name_field" htmlFor="name" className="form-label">
                   Give it a Name:
                 </label>
@@ -241,7 +240,7 @@ const Register = () => {
                 />
               </div>
               <br></br>
-              <div class="nes-field">
+              <div className="nes-field">
                 <label for="password" htmlFor="password" className="form-label">
                   You need a Super Secret Password:
                 </label>
@@ -255,7 +254,7 @@ const Register = () => {
                 />
               </div>
               <br></br>
-              <div class="nes-field">
+              <div className="nes-field">
                 <label for="email" htmlFor="email" className="form-label">
                   And your favourite email:
                 </label>
