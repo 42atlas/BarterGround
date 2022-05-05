@@ -3,47 +3,30 @@ import "../style/main.css";
 import "nes.css/css/nes.min.css";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
+import ErrorMessage from "./ErrorMessage/ErrorMessage";
 
 import Loading from "./Loading";
 import ReactDOM from "react-dom";
 
 const StoreItem = () => {
   const navigate = useNavigate();
-  const [values, setValues] = useState([2]);
-  const [status, setStatus] = useState("is-success");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [error, setError] = useState(false);
   const [isAccept, setIsAccept] = useState();
-
-  const acceptOffer = setIsAccept(true);
-  const declineOffer = setIsAccept(false);
-
-  const setBarColor = () => {
-    if (values >= 2) {
-      setStatus("is-success");
-    } else if ((values = 1)) {
-      setStatus("is-warning");
-    } else {
-      setStatus("is-error");
-    }
-  };
-
-  /*   const { getTrackProps, handles } = useRanger({
-      min: 0,
-      max: 4,
-      stepSize: 1,
-      values,
-      onChange: setValues,
-    }); */
 
   return (
     <div className="main-container">
-      <div className="nes-container is-centered with-title">
-        <h3 className="title"> Offer Received </h3>
-        <div className="internal-container">
-          {/* insert avatar + name */}
-          <div className="offers-img-container">
-            <div className="nes-container is-rounded">
+      <div className="nes-container is-centered with-title" id="landing">
+        <h3 className="title"> Store Item </h3>
+        <div className="main-container">
+
+
+
+          <div className="nes-container is-rounded" id="store-container">
+            <div className="storeitem-img">
               <img
-                className="main-img"
+                className="item-img"
                 src={require("../images/logo.webp")} /* get img */
                 alt="barter pixel art"
               />
@@ -53,84 +36,65 @@ const StoreItem = () => {
                   <span>Is Listed</span>
                 </label>
                 <label className="nes-btn">
-                  <span>Select your Image</span>
+                  <span>Upload your Image</span>
                   <input type="file" />
                 </label>
               </div>
+
             </div>
           </div>
 
-          <progress
-          /* {...getTrackProps({
-            style: {
-              className: `nes-progress ${status}`,
-              value: `${values}`,
-              max: "4",
-            },
-          })} */
-          >
-            {/* {handles.map(({ getHandleProps }) => (
-              <button
-                {...getHandleProps({
-                  style: {
-                    class: "nes-btn",
-                    width: "50px",
-                    height: "50px",
-                    outline: "none",
-                  },
-                })}
-              />
-            ))} */}
-          </progress>
-
+          <br />
           <label for="textarea_field">Description</label>
           <textarea
             id="textarea_field"
             className="nes-textarea"
             spellcheck="false"
           ></textarea>
+          <br />
 
-          <select id="default_select">
-            <option value="" disabled="" selected="" hidden="">
-              Select...
-            </option>
-            <option value="0">Cat1</option>
-            <option value="1">Cat2</option>
-          </select>
+          <div className="internal-container">
+            <select id="default_select">
+              <option value="" disabled="" selected="" hidden="">
+                Select...
+              </option>
+              <option value="0">Cat1</option>
+              <option value="1">Cat2</option>
+            </select>
+            <br />
 
-          <div className="acceptoffer">
             <button
               type="button"
               className="nes-btn is-success"
-              /* onClick={placeOffer} */
+            /* onClick={placeOffer} */
             >
               OK
             </button>
           </div>
         </div>
       </div>
-      <div className="nes-container is-centered">
+      <div className="nes-container is-centered" id="landing">
         <div className="buttons-container">
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/exchange")}
+            onClick={() => navigate("/auth/exchange")}
           >
             Exchange center
           </button>
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/home")}
+            onClick={() => navigate("/auth/home")}
           >
             Home
           </button>
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/items")}
+            onClick={() => navigate("/auth/items")}
           >
-            Your Items
+            Your Treasure
           </button>
         </div>
       </div>

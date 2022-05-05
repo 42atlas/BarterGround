@@ -47,39 +47,23 @@ const Register = () => {
     }));
     setSelected(
       e.target.getAttribute("character") ||
-        e.target.parentNode.parentNode.getAttribute("character")
+      e.target.parentNode.parentNode.getAttribute("character")
     );
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!name || !email || !password)
+    if (!name || !email || !password || !character)
       return (
         setError(true),
-        setErrorMessage("NO NO NO THE FIELDS CANNOT BE EMPTY!"),
+        setErrorMessage("YOU MUST PICK A CHARACTER AND FILL IN YOUR DATA !"),
         setClassField("nes-input is-error")
       );
     await registerUser({ name, email, password, character });
   };
 
-  if (isAuthenticated) return <Navigate to="/home" replace />;
-  /* if (!isAuthenticated) return(
-    setError(true),
-    setErrorMessage("NO NO NO THIS EMAIL IS ALREADY REGISTERED!")); */
-
+  if (isAuthenticated) return <Navigate to="/auth/home" replace />;
   if (loading) return <Loading />;
-
-  /*   const handleSubmit = () => {
-    if (!name || !email || !password) {
-      setError(true);
-      setErrorMessage("NO NO NO THE FIELDS CANNOT BE EMPTY!");
-      setClassField("nes-input is-error"); //jorge - or selector
-      return;
-    } else {
-      setError(false);
-    }
-  }; */
-
   return (
     <div className="main-container">
       <div className="nes-container is-centered with-title">

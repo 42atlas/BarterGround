@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const loaderVariants = {
   animationOne: {
     x: [-200, 200],
-    y: [0, -30],
+    y: [30, -30],
     transition: {
       x: {
         yoyo: Infinity,
@@ -25,7 +25,7 @@ const loaderVariants = {
 const Loading = () => {
   return (
     <>
-      <div className="margin">
+      <div className="main-container">
         <motion.div
           className="loader"
           variants={loaderVariants}

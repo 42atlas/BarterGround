@@ -29,18 +29,18 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="home" element={<Home />} />
-          <Route path="items" element={<Items />} />
-          <Route path="protected" element={<ProtectedRoute />}>
+          <Route path="auth" element={<ProtectedRoute />}>
+            <Route path="home" element={<Home />} />
+            <Route path="items" element={<Items />} />
             <Route path="storeitem" element={<StoreItem />} />
+            <Route exact path="exchange" element={<Exchange />} />
+            <Route path="messages" element={<Messages />} />
+            <Route path="sendmessage" element={<SendMessage />} />
+            <Route path="bid" element={<Bid />} />
+            <Route path="offers" element={<Offers />} />
+            <Route path="offerreceived" element={<OfferReceived />} />
+            <Route path="offersent" element={<OfferSent />} />
           </Route>
-          <Route path="exchange" element={<Exchange />} />
-          <Route path="messages" element={<Messages />} />
-          <Route path="sendmessage" element={<SendMessage />} />
-          <Route path="bid" element={<Bid />} />
-          <Route path="offers" element={<Offers />} />
-          <Route path="offerreceived" element={<OfferReceived />} />
-          <Route path="offersent" element={<OfferSent />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

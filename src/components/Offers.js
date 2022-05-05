@@ -38,21 +38,21 @@ const Offers = () => {
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/messages")}
+            onClick={() => navigate("/auth/messages")}
           >
             Messages
           </button>
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/exchange")}
+            onClick={() => navigate("/auth/exchange")}
           >
             Exchange
           </button>
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/home")}
+            onClick={() => navigate("/auth/home")}
           >
             Home
           </button>

@@ -69,7 +69,7 @@ const Contact = () => {
                     <br />
                     <div className="nes-field">
                         <label for="textarea_field">Your Story</label>
-                        <textarea id="textarea" className="nes-textarea" placeholder="Once upon a time..." name="message" value={textarea} onChange={handleChange} />
+                        <textarea id="textarea" className="nes-textarea" placeholder="I need more mana..." name="message" value={textarea} onChange={handleChange} />
                     </div>
                     <br />
                     <button type="submit" className="nes-btn is-success" style={{ width: "99%" }} value="send" onClick={sendEmail}>Send message</button>
