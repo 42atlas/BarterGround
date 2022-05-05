@@ -1,10 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import React from "react";
+import { useAuth } from "../context/AuthContext";
 import "../style/main.css";
 import "nes.css/css/nes.min.css";
 
 const LandingPage = () => {
-  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate()
+  if (isAuthenticated) return <Navigate to='/auth/home' replace />;
   return (
     <div className="main-container">
       <div className="nes-container is-centered with-title" id="landing">
@@ -20,7 +23,7 @@ const LandingPage = () => {
               <button
                 type="button"
                 className="nes-btn is-primary"
-                onClick={() => navigate("/register")}
+                onClick={() => navigate("register")}
               >
                 Register
               </button>
@@ -28,7 +31,7 @@ const LandingPage = () => {
               <button
                 type="button"
                 className="nes-btn"
-                onClick={() => navigate("/login")}
+                onClick={() => navigate("login")}
               >
                 Login
               </button>

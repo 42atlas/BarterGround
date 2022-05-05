@@ -91,21 +91,21 @@ const OfferReceived = () => {
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/sendmessage")}
+            onClick={() => navigate("/auth/sendmessage")}
           >
             Send a Message to (name of the user in case)
           </button>
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/offers")}
+            onClick={() => navigate("/auth/offers")}
           >
             Back to Offers
           </button>
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/home")}
+            onClick={() => navigate("/auth/home")}
           >
             Home
           </button>

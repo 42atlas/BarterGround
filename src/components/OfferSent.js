@@ -74,14 +74,14 @@ const OfferSent = () => {
             <button
               type="button"
               className="nes-btn is-warning"
-              /* onClick={modifyOffer} */
+            /* onClick={modifyOffer} */
             >
               Modify
             </button>
             <button
               type="button"
               className="nes-btn is-error"
-              /* onClick={removeOffer} */
+            /* onClick={removeOffer} */
             >
               Decline
             </button>
@@ -93,21 +93,21 @@ const OfferSent = () => {
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/sendmessage")}
+            onClick={() => navigate("/auth/sendmessage")}
           >
             Send a Message to (name of the user in case)
           </button>
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/offers")}
+            onClick={() => navigate("/auth/offers")}
           >
             Back to Offers
           </button>
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/home")}
+            onClick={() => navigate("/auth/home")}
           >
             Home
           </button>

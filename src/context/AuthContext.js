@@ -19,7 +19,7 @@ const AuthState = ({ children }) => {
       try {
         setLoading(true);
         const { data } = await axios.get(
-          `${process.env.BARTERGROUND_API_URL}/auth/me`,
+          `${process.env.REACT_APP_BARTERGROUND_API_URL}/auth/me`,
           {
             headers: {
               Authorization: token,
@@ -45,14 +45,14 @@ const AuthState = ({ children }) => {
       const {
         data: { token },
       } = await axios.post(
-        `${process.env.BARTERGROUND_API_URL}/auth/signup`,
+        `${process.env.REACT_APP_BARTERGROUND_API_URL}/auth/signup`,
         formData
       );
-      localStorage.setItem("token", token);
+      localStorage.setItem('token', token)
       setToken(token);
       setIsAuthenticated(true);
       setLoading(false);
-      navigate("/protected/new-post", { replace: true });
+      navigate("/auth/home", { replace: true });
     } catch (error) {
       toast.error(error.response?.data.error || error.message);
       setLoading(false);
@@ -65,14 +65,14 @@ const AuthState = ({ children }) => {
       const {
         data: { token },
       } = await axios.post(
-        `${process.env.BARTERGROUND_API_URL}/auth/signin`,
+        `${process.env.REACT_APP_BARTERGROUND_API_URL}/auth/signin`,
         formData
       );
       localStorage.setItem("token", token);
       setToken(token);
       setIsAuthenticated(true);
       setLoading(false);
-      navigate("/protected/new-post", { replace: true });
+      navigate("/auth/home", { replace: true });
     } catch (error) {
       toast.error(error.response?.data.error || error.message);
       setLoading(false);

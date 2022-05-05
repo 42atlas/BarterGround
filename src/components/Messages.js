@@ -30,21 +30,21 @@ const Messages = () => {
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/Home")}
+            onClick={() => navigate("/auth/Home")}
           >
             Home
           </button>
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/offers")}
+            onClick={() => navigate("/auth/offers")}
           >
             Offers
           </button>
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/exchange")}
+            onClick={() => navigate("/auth/exchange")}
           >
             Exchange
           </button>

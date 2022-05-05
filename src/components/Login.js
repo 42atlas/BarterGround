@@ -2,27 +2,44 @@ import React from "react";
 import "../style/main.css";
 import "nes.css/css/nes.min.css";
 import ErrorMessage from "./ErrorMessage/ErrorMessage";
-import { useNavigate, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useState } from "react";
-import Loading from "./Loading";
-import KeysIcon from "./characters/iconsShadow/keysicon";
 
-/*import { useAuth } from "../context/AuthContext"; */
-/* import Loading from "./Loading"; */
+import KeysIcon from "./characters/iconsShadow/keysicon";
+import { useAuth } from "../context/AuthContext";
+import Loading from "./Loading";
 
 const Login = () => {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
   const [{ email, password }, setFormState] = useState({
     email: "",
     password: "",
   });
+  const { isAuthenticated, loading, loginUser } = useAuth();
 
   const handleChange = (e) =>
     setFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 
-  const handleSubmit = () => {
+
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    if (!email || !password) return
+    setError(true)
+    setErrorMessage("NO NO NO THE FIELDS CANNOT BE EMPTY!")
+    await loginUser({ email, password });
+  };
+
+
+  if (isAuthenticated) return <Navigate to='/auth/home' replace />;
+  /* if (!isAuthenticated) return(
+ setError(true),
+ setErrorMessage("NO NO NO THIS EMAIL IS ALREADY REGISTERED!")); */
+
+  if (loading) return <Loading />;
+
+  /*   const handleSubmit = () => {
     if (!email || !password) {
       setError(true);
       setErrorMessage("NO DATA NO PARTY!");
@@ -30,26 +47,7 @@ const Login = () => {
     } else {
       setError(false);
     }
-  };
-
-  /* const handleSubmit = async e => {
-        e.preventDefault();
-        if (!email || !password) return
-        setError(true)
-        setErrorMessage("NO NO NO THE FIELDS CANNOT BE EMPTY!")
-        await loginUser({ email, password });
-    };  
-    
-
-    if (isAuthenticated) {
-        setError(false);
-        return <Navigate to='/protected/home' replace />;
-    } else {
-        setError(true)
-        setErrorMessage("NO NO NO THIS DATA ARE INCORRECT!")
-}
-  
-  if (loading) return <Loading />; */
+  }; */
 
   return (
     <div className="main-container">

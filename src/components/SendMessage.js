@@ -22,7 +22,7 @@ const SendMessage = () => {
           <button
             type="button"
             className="nes-btn is-success"
-            /* onClick={sendMessage} */
+          /* onClick={sendMessage} */
           >
             Send Message
           </button>
@@ -33,21 +33,21 @@ const SendMessage = () => {
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/home")}
+            onClick={navigate("/auth/home")}
           >
             Home
           </button>
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/offers")}
+            onClick={navigate("/auth/offers")}
           >
             Offers
           </button>
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/messages")}
+            onClick={navigate("/auth/messages")}
           >
             Messages
           </button>
