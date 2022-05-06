@@ -86,6 +86,26 @@ const AuthState = ({ children }) => {
     setIsAuthenticated(false);
   };
 
+  const createPost = async (formData) => {
+    try {
+      setLoading(true);
+      const {
+        data: { token },
+      } = await axios.post(
+        `${process.env.REACT_APP_BARTERGROUND_API_URL}/auth/storeitem`,
+        formData
+      );
+      localStorage.setItem('token', token)
+      setToken(token);
+      setIsAuthenticated(true);
+      setLoading(false);
+      navigate("/auth/items", { replace: true });
+    } catch (error) {
+      toast.error(error.response?.data.error || error.message);
+      setLoading(false);
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -95,6 +115,7 @@ const AuthState = ({ children }) => {
         loginUser,
         logout,
         user,
+        createPost,
       }}
     >
       {children}
