@@ -23,7 +23,7 @@ const Layout = () => {
             Quit
           </button>
         ) : (
-          <i class="nes-icon is-small star"></i>
+          <i className="nes-icon is-small star"></i>
         )}
       </div>
 
