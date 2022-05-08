@@ -14,6 +14,7 @@ import OfferSent from "./components/OfferSent";
 import StoreItem from "./components/StoreItem";
 import Contact from "./components/Contact";
 import NotFound from "./components/NotFound";
+import Settings from "./components/Settings";
 import AuthState from "./context/AuthContext";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -40,6 +41,7 @@ function App() {
             <Route path="offers" element={<Offers />} />
             <Route path="offerreceived" element={<OfferReceived />} />
             <Route path="offersent" element={<OfferSent />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Route>

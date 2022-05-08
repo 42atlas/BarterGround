@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const loaderVariants = {
   animationOne: {
     x: [-200, 200],
-    y: [30, -30],
+    y: [0, -30],
     transition: {
       x: {
         yoyo: Infinity,
@@ -40,13 +40,3 @@ const Loading = () => {
 };
 
 export default Loading;
-
-{
-  /* <div class="main-container">
-      <div class="nes-container is-centered with-title">
-        <h3 class="title"> Loading ... </h3>
-
-        <BoyRunning />
-      </div>
-    </div> */
-}

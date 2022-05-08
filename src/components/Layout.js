@@ -11,19 +11,22 @@ const Layout = () => {
   return (
     <>
       <div className="layout-container">
-
-
-        <NavLink to="/auth/home" className="nav-link">
+        <NavLink to="/auth/settings" className="nav-link" id="small-margin">
           {user ? `Welcome back, ${user.character} ${user.name}` : "v.0.1.9"}
         </NavLink>
         <br />
 
         {isAuthenticated ? (
-          <button type="text" className="nes-btn is-warning" onClick={logout}>
+          <button
+            type="text"
+            className="nes-btn is-warning"
+            id="small-margin"
+            onClick={logout}
+          >
             Quit
           </button>
         ) : (
-          <i className="nes-icon is-small star"></i>
+          <i className="nes-icon is-small star" id="small-margin"></i>
         )}
       </div>
 

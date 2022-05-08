@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 const AuthContext = createContext();
 
@@ -32,7 +31,7 @@ const AuthState = ({ children }) => {
       } catch (error) {
         setToken(null);
         localStorage.removeItem("token");
-        toast.error(error.response?.data.error || error.message);
+        console.log(error.response?.data.error || error.message);
         setLoading(false);
       }
     };
@@ -48,13 +47,13 @@ const AuthState = ({ children }) => {
         `${process.env.REACT_APP_BARTERGROUND_API_URL}/auth/signup`,
         formData
       );
-      localStorage.setItem('token', token)
+      localStorage.setItem("token", token);
       setToken(token);
       setIsAuthenticated(true);
       setLoading(false);
       navigate("/auth/home", { replace: true });
     } catch (error) {
-      toast.error(error.response?.data.error || error.message);
+      console.log(error.response?.data.error || error.message);
       setLoading(false);
     }
   };
@@ -74,7 +73,22 @@ const AuthState = ({ children }) => {
       setLoading(false);
       navigate("/auth/home", { replace: true });
     } catch (error) {
-      toast.error(error.response?.data.error || error.message);
+      console.log(error.response?.data.error || error.message);
+      setLoading(false);
+    }
+  };
+
+  const updateUser = async (formData) => {
+    try {
+      setLoading(true);
+      await axios.post(
+        `${process.env.REACT_APP_BARTERGROUND_API_URL}/auth/update`,
+        formData
+      );
+      setLoading(false);
+      navigate("/auth/home", { replace: true });
+    } catch (error) {
+      console.log(error.response?.data.error || error.message);
       setLoading(false);
     }
   };
@@ -86,26 +100,6 @@ const AuthState = ({ children }) => {
     setIsAuthenticated(false);
   };
 
-  const createPost = async (formData) => {
-    try {
-      setLoading(true);
-      const {
-        data: { token },
-      } = await axios.post(
-        `${process.env.REACT_APP_BARTERGROUND_API_URL}/auth/storeitem`,
-        formData
-      );
-      localStorage.setItem('token', token)
-      setToken(token);
-      setIsAuthenticated(true);
-      setLoading(false);
-      navigate("/auth/items", { replace: true });
-    } catch (error) {
-      toast.error(error.response?.data.error || error.message);
-      setLoading(false);
-    }
-  };
-
   return (
     <AuthContext.Provider
       value={{
@@ -113,9 +107,9 @@ const AuthState = ({ children }) => {
         isAuthenticated,
         registerUser,
         loginUser,
+        updateUser,
         logout,
         user,
-        createPost,
       }}
     >
       {children}

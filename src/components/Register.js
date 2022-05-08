@@ -47,7 +47,7 @@ const Register = () => {
     }));
     setSelected(
       e.target.getAttribute("character") ||
-      e.target.parentNode.parentNode.getAttribute("character")
+        e.target.parentNode.parentNode.getAttribute("character")
     );
   };
 

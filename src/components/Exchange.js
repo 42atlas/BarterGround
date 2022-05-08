@@ -1,12 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../style/main.css";
 import "nes.css/css/nes.min.css";
-import { useNavigate, Navigate } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate, Navigate, Link } from "react-router-dom";
+
 import Loading from "./Loading";
+import axios from "axios";
+import { useAuth } from "../context/AuthContext";
 
 const Exchange = () => {
   const navigate = useNavigate();
+  const [items, setItems] = useState([]);
+  const { user, isAuthenticated, loading } = useAuth();
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    const getItems = async () => {
+      try {
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/all-posts`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: localStorage.getItem("token"),
+            },
+          }
+        );
+        console.log(data);
+        setItems(data);
+      } catch (error) {
+        console.log(error.response?.data.error || error.message);
+        setError(true);
+        setErrorMessage("SOMETHING WENT WRONG !");
+      }
+    };
+    user && getItems();
+  }, [user]);
+
   return (
     <div className="main-container">
       <div className="nes-container is-centered with-title">
@@ -17,20 +47,80 @@ const Exchange = () => {
               type="text"
               id="inline_field"
               className="nes-input"
-              placeholder="Search"
+              placeholder="Search an item..."
             />
           </div>
+          <div className="nes-select">
+            <select
+              id="category" /* value={category} onChange={handleInputChange} */
+            >
+              <option value="" disabled="" selected="" hidden="yes">
+                Select Category
+              </option>
+              <option value={"Appliances"}>Appliances</option>
+              <option value={"Automotive"}>Automotive</option>
+              <option value={"Baby Stuff"}>Baby Stuff</option>
+              <option value={"Beauty"}>Beauty</option>
+              <option value={"Books"}>Books</option>
+              <option value={"Photo Stuff"}>Photo Stuff</option>
+              <option value={"Clothes"}>Clothes</option>
+              <option value={"Cell Phones & Accessories"}>
+                Cell Phones & Accessories
+              </option>
+              <option value={"Collectible"}>Collectible</option>
+              <option value={"Consumer Electronics"}>
+                Consumer Electronics
+              </option>
+              <option value={"Fine Art"}>Fine Art</option>
+              <option value={"Grocery & Gourmet Foods"}>
+                Grocery & Gourmet Foods
+              </option>
+              <option value={"Health & Personal Care"}>
+                Health & Personal Care
+              </option>
+              <option value={"Home & Garden"}>Home & Garden</option>
+              <option value={"Independent Design"}>Independent Design</option>
+              <option value={"Industrial & Scientific"}>
+                Industrial & Scientific
+              </option>
 
-          <select id="default_select">
-            <option value="" disabled="" selected="" hidden="">
-              Select...
-            </option>
-            <option value="0">Cat1</option>
-            <option value="1">Cat2</option>
-          </select>
-          <div className="infinite-img-y">
-            {/* creare elemento per immagini e collegarlo ad API / img-containers */}
-            navigate("/bid")
+              <option value={"Music, Vinyls & DVD"}>Music, Vinyls & DVD</option>
+              <option value={"Musical Instruments"}>Musical Instruments</option>
+              <option value={"Office Stuff"}>Office Stuff</option>
+              <option value={"Others"}>Others</option>
+              <option value={"Outdoors"}>Outdoors</option>
+              <option value={"Computers"}>Computers</option>
+              <option value={"Pet Supplies"}>Pet Supplies</option>
+              <option value={"Software"}>Software</option>
+              <option value={"Sports"}>Sports</option>
+              <option value={"Tools & Home Improvement"}>
+                Tools & Home Improvement
+              </option>
+              <option value={"Toys & Games"}>Toys & Games</option>
+              <option value={"Video, DVD & Blu-ray"}>
+                Video, DVD & Blu-ray
+              </option>
+              <option value={"Video Games"}>Video Games</option>
+            </select>
+          </div>
+          <div className="infinite-img-x">
+            {items.map((item) => (
+              <div key={item._id} className="infinite-img-x">
+                {/*personal ITEMS Gallery*/}
+                <Link to={`/auth/storeitem?id=${item._id}`}>
+                  <div
+                    className="nes-container with-title"
+                    id="item-img-container"
+                  >
+                    <h3 className="title" id="smallfont">
+                      {item.title}
+                    </h3>
+
+                    <img className="item-img" src={item.image} alt="item img" />
+                  </div>
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
         <div className="nes-container is-centered">
@@ -38,21 +128,21 @@ const Exchange = () => {
             <button
               type="button"
               className="nes-btn is-primary"
-              onClick={navigate("/storeitem")}
+              onClick={() => navigate("/auth/storeitem")}
             >
               List your Item
             </button>
             <button
               type="button"
               className="nes-btn is-primary"
-              onClick={navigate("/home")}
+              onClick={() => navigate("/auth/home")}
             >
               Home
             </button>
             <button
               type="button"
               className="nes-btn is-primary"
-              onClick={navigate("/messages")}
+              onClick={() => navigate("/auth/messages")}
             >
               Messages
             </button>

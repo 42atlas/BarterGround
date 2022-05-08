@@ -21,18 +21,15 @@ const Login = () => {
   const handleChange = (e) =>
     setFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 
-
-
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email || !password) return
-    setError(true)
-    setErrorMessage("NO NO NO THE FIELDS CANNOT BE EMPTY!")
+    if (!email || !password) return;
+    setError(true);
+    setErrorMessage("WRONG DATA!");
     await loginUser({ email, password });
   };
 
-
-  if (isAuthenticated) return <Navigate to='/auth/home' replace />;
+  if (isAuthenticated) return <Navigate to="/auth/home" replace />;
   /* if (!isAuthenticated) return(
  setError(true),
  setErrorMessage("NO NO NO THIS EMAIL IS ALREADY REGISTERED!")); */
