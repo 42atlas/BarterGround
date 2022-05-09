@@ -65,21 +65,16 @@ const StoreItem = () => {
         });
     }
   }, [id]);
-  async function getFileFromUrl(url, name, defaultType = "image/jpeg") {
-    // let response = await fetch(url, { mode: "no-cors" });
-    // let data = await response.blob();
-    // let metadata = {
-    //   contentType: "image/jpeg",
-    // };
-    // return new File([data], name, metadata);
-    return fetch(url)
-      .then((response) => response.blob())
-      .then((myBlob) => {
-        const urlCreator = window.URL || window.webkitURL;
-        const imageUrl = urlCreator.createObjectURL(myBlob);
-        return new File([imageUrl], name, { type: "image/jpeg" });
-      });
-  }
+  //TODO: Might need in future
+  // async function getFileFromUrl(url, name, defaultType = "image/jpeg") {
+  //   return fetch(url)
+  //     .then((response) => response.blob())
+  //     .then((myBlob) => {
+  //       const urlCreator = window.URL || window.webkitURL;
+  //       const imageUrl = urlCreator.createObjectURL(myBlob);
+  //       return new File([imageUrl], name, { type: "image/jpeg" });
+  //     });
+  // }
   const handleUpdate = async (e) => {
     try {
       e.preventDefault();
@@ -87,11 +82,12 @@ const StoreItem = () => {
       /*
       if (!title || !file || !body || !category)
         return setError(true), setErrorMessage("NOTHING CAN BE LEFT EMPTY !"); */
-      if (!file) {
-        fileObj = await getFileFromUrl(image, image.split("/").pop());
-      }
-      console.log(fileObj);
-      console.log("file", file);
+
+      //TODO : Might need in future
+      // if (!file) {
+      //   fileObj = await getFileFromUrl(image, image.split("/").pop());
+      // }
+
       const formData = new FormData();
       formData.append("title", title);
       formData.append("body", body);
