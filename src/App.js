@@ -41,7 +41,7 @@ function App() {
             <Route path="offers" element={<Offers />} />
             <Route path="offerreceived" element={<OfferReceived />} />
             <Route path="offersent" element={<OfferSent />} />
-            <Route path="settings" element={<Settings />} />
+            <Route path="settings/:id" element={<Settings />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Route>

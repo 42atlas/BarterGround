@@ -1,8 +1,8 @@
 import React from "react";
 import "../style/main.css";
 import "nes.css/css/nes.min.css";
-import { useNavigate, Navigate, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
 import BardPresenting from "./characters/Bard/BardPresenting";
 import BoyPresenting from "./characters/Boy/BoyPresenting";
 import BuilderPresenting from "./characters/Builder/BuilderPresenting";
@@ -22,6 +22,7 @@ import ErrorMessage from "./ErrorMessage/ErrorMessage";
 
 const Settings = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
   const [selected, setSelected] = useState(null);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -35,7 +36,7 @@ const Settings = () => {
   });
 
   const { loading, updateUser } = useAuth();
-  /* 
+  /*
   const handleChangeChar = (e) => {
     setFormState((prev) => ({
       ...prev,
@@ -90,7 +91,7 @@ const Settings = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await updateUser({ name, email, password, character });
+    await updateUser({ id, name, email, password, character });
   };
 
   if (loading) return <Loading />;

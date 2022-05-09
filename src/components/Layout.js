@@ -11,7 +11,11 @@ const Layout = () => {
   return (
     <>
       <div className="layout-container">
-        <NavLink to="/auth/settings" className="nav-link" id="small-margin">
+        <NavLink
+          to={`/auth/settings/${user?._id}`}
+          className="nav-link"
+          id="small-margin"
+        >
           {user ? `Welcome back, ${user.character} ${user.name}` : "v.0.1.9"}
         </NavLink>
         <br />

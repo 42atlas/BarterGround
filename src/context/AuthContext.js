@@ -11,6 +11,7 @@ const AuthState = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
+  const [isUserUpdated, setIsUserUpdated] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token"));
 
   useEffect(() => {
@@ -35,8 +36,8 @@ const AuthState = ({ children }) => {
         setLoading(false);
       }
     };
-    token && getUser();
-  }, [token]);
+    (token || isUserUpdated) && getUser();
+  }, [token, isUserUpdated]);
 
   const registerUser = async (formData) => {
     try {
@@ -81,13 +82,15 @@ const AuthState = ({ children }) => {
   const updateUser = async (formData) => {
     try {
       setLoading(true);
-      await axios.post(
+      await axios.put(
         `${process.env.REACT_APP_BARTERGROUND_API_URL}/auth/update`,
         formData
       );
       setLoading(false);
+      setIsUserUpdated(true);
       navigate("/auth/home", { replace: true });
     } catch (error) {
+      setIsUserUpdated(false);
       console.log(error.response?.data.error || error.message);
       setLoading(false);
     }
