@@ -4,10 +4,6 @@ import "nes.css/css/nes.min.css";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useState } from "react";
 
-import Loading from "./Loading";
-import ReactDOM from "react-dom";
-/* import { useRanger } from "react-ranger"; */
-
 const OfferReceived = () => {
   const navigate = useNavigate();
   const [isOffer, setIsOffer] = useState();
