@@ -4,10 +4,6 @@ import "nes.css/css/nes.min.css";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useState } from "react";
 
-import Loading from "./Loading";
-import ReactDOM from "react-dom";
-/* import { useRanger } from "react-ranger"; */
-
 const OfferSent = () => {
   const navigate = useNavigate();
   /*   const [values, setValues] = useState([2]);
@@ -74,14 +70,14 @@ const OfferSent = () => {
             <button
               type="button"
               className="nes-btn is-warning"
-            /* onClick={modifyOffer} */
+              /* onClick={modifyOffer} */
             >
               Modify
             </button>
             <button
               type="button"
               className="nes-btn is-error"
-            /* onClick={removeOffer} */
+              /* onClick={removeOffer} */
             >
               Decline
             </button>

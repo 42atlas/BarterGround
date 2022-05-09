@@ -21,6 +21,7 @@ import { useAuth } from "../context/AuthContext";
 const Home = () => {
   const [messages, setMessages] = useState(0);
   const [offers, setOffers] = useState(0);
+
   const [alertMessages, setAlertMessages] = useState("nes-text is-disabled");
   const [alertOffers, setAlertOffers] = useState("nes-text is-disabled");
 

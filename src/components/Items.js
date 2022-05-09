@@ -10,7 +10,7 @@ import ErrorMessage from "./ErrorMessage/ErrorMessage";
 const Items = () => {
   const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState(false);
-  const { user, isAuthenticated, loading } = useAuth();
+  const { user, loading } = useAuth();
   const [items, setItems] = useState([]);
 
   const [error, setError] = useState(false);
