@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-import React, { useState, useEffect, useMemo } from "react";
-=======
-import React, { useState, useEffect, useCallback } from "react";
->>>>>>> Stashed changes
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import "../style/main.css";
 import "nes.css/css/nes.min.css";
 import { useNavigate, Navigate, Link } from "react-router-dom";
@@ -19,11 +15,9 @@ const Exchange = () => {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-<<<<<<< Updated upstream
   const [{ category }, setFormState] = useState({
     category: "",
   });
-=======
   const getItems = useCallback(async () => {
     try {
       const { data } = await axios.get(
@@ -42,7 +36,6 @@ const Exchange = () => {
       setErrorMessage("SOMETHING WENT WRONG !");
     }
   }, []);
->>>>>>> Stashed changes
 
   useEffect(() => {
     getItems();
@@ -77,16 +70,7 @@ const Exchange = () => {
             />
           </div>
           <div className="nes-select">
-<<<<<<< Updated upstream
             <select id="category" value={category} onChange={handleInputChange}>
-=======
-            <select
-              id="category"
-              // name="category"
-              // value={category}
-              // onChange={handleInputChange}
-            >
->>>>>>> Stashed changes
               <option value="" disabled="" selected="" hidden="yes">
                 Select Category
               </option>
