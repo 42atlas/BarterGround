@@ -45,36 +45,58 @@ const StoreItem = () => {
     setFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/${id}`)
-      .then((response) => {
-        var result = response.data;
-        setFormState({
-          title: result.title,
-          body: result.body,
-          category: result.category,
+    if (id) {
+      axios
+        .get(`${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/${id}`)
+        .then((response) => {
+          var result = response.data;
+          setFormState({
+            title: result.title,
+            body: result.body,
+            category: result.category,
+          });
+          setIsListed(result.isListed);
+          setImage(result.image);
+          setIsSubmitBtn(false);
+          console.log(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
         });
-        setIsListed(result.isListed);
-        setImage(result.image);
-        setIsSubmitBtn(false);
-        console.log(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
+    }
+  }, [id]);
+  async function getFileFromUrl(url, name, defaultType = "image/jpeg") {
+    // let response = await fetch(url, { mode: "no-cors" });
+    // let data = await response.blob();
+    // let metadata = {
+    //   contentType: "image/jpeg",
+    // };
+    // return new File([data], name, metadata);
+    return fetch(url)
+      .then((response) => response.blob())
+      .then((myBlob) => {
+        const urlCreator = window.URL || window.webkitURL;
+        const imageUrl = urlCreator.createObjectURL(myBlob);
+        return new File([imageUrl], name, { type: "image/jpeg" });
       });
-  }, []);
-
+  }
   const handleUpdate = async (e) => {
     try {
       e.preventDefault();
-      /* 
+      let fileObj = null;
+      /*
       if (!title || !file || !body || !category)
         return setError(true), setErrorMessage("NOTHING CAN BE LEFT EMPTY !"); */
+      if (!file) {
+        fileObj = await getFileFromUrl(image, image.split("/").pop());
+      }
+      console.log(fileObj);
+      console.log("file", file);
       const formData = new FormData();
       formData.append("title", title);
       formData.append("body", body);
       formData.append("category", category);
-      formData.append("image", file);
+      file && formData.append("image", file);
       formData.append("isListed", isListed);
       await axios.put(
         `${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/${id}`,
@@ -171,12 +193,12 @@ const StoreItem = () => {
             <span>Is Listed</span>
           </label>
           <br />
-          <div class="nes-field">
+          <div className="nes-field">
             <label for="title">Title</label>
             <input
               type="text"
               id="title"
-              class="nes-input"
+              className="nes-input"
               value={title}
               onChange={handleInputChange}
             />
@@ -188,7 +210,7 @@ const StoreItem = () => {
           <textarea
             id="body"
             className="nes-textarea"
-            spellcheck="false"
+            spellCheck="false"
             value={body}
             onChange={handleInputChange}
           ></textarea>

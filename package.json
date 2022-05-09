@@ -2,6 +2,7 @@
   "name": "barterground",
   "version": "0.1.0",
   "private": true,
+  "proxy": "localhost:3000",
   "dependencies": {
     "@emailjs/browser": "^3.6.2",
     "@testing-library/jest-dom": "^5.16.4",
@@ -17,6 +18,7 @@
     "nes-components": "^0.0.15",
     "nes.css": "^2.3.0",
     "node": "^17.7.2",
+    "npm": "^6.13.7",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",

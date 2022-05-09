@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 import React, { useState, useEffect, useMemo } from "react";
+=======
+import React, { useState, useEffect, useCallback } from "react";
+>>>>>>> Stashed changes
 import "../style/main.css";
 import "nes.css/css/nes.min.css";
 import { useNavigate, Navigate, Link } from "react-router-dom";
@@ -15,32 +19,34 @@ const Exchange = () => {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+<<<<<<< Updated upstream
   const [{ category }, setFormState] = useState({
     category: "",
   });
+=======
+  const getItems = useCallback(async () => {
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/all-posts`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      );
+      setItems(data);
+    } catch (error) {
+      console.log(error.response?.data.error || error.message);
+      setError(true);
+      setErrorMessage("SOMETHING WENT WRONG !");
+    }
+  }, []);
+>>>>>>> Stashed changes
 
   useEffect(() => {
-    const getItems = async () => {
-      try {
-        const { data } = await axios.get(
-          `${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/all-posts`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: localStorage.getItem("token"),
-            },
-          }
-        );
-        console.log(data);
-        setItems(data);
-      } catch (error) {
-        console.log(error.response?.data.error || error.message);
-        setError(true);
-        setErrorMessage("SOMETHING WENT WRONG !");
-      }
-    };
-    user && getItems();
-  }, [user]);
+    getItems();
+  }, []);
 
   const handleInputChange = (e) =>
     setFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -71,7 +77,16 @@ const Exchange = () => {
             />
           </div>
           <div className="nes-select">
+<<<<<<< Updated upstream
             <select id="category" value={category} onChange={handleInputChange}>
+=======
+            <select
+              id="category"
+              // name="category"
+              // value={category}
+              // onChange={handleInputChange}
+            >
+>>>>>>> Stashed changes
               <option value="" disabled="" selected="" hidden="yes">
                 Select Category
               </option>
