@@ -18,6 +18,8 @@ const Exchange = () => {
   const [{ category }, setFormState] = useState({
     category: "",
   });
+  const [query, setQuery] = useState("");
+
   const getItems = useCallback(async () => {
     try {
       const { data } = await axios.get(
@@ -46,14 +48,20 @@ const Exchange = () => {
 
   function getFilteredList() {
     // Avoid filter when selectedCategory is null
-    if (!category) {
+    if (!category || query === "") {
       return items;
+    } else {
+      return (
+        items.filter((item) => item.category === category) &&
+        items.title.toLowerCase().includes(query.toLowerCase())
+      );
     }
-    return items.filter((item) => item.category === category);
   }
 
+  console.log(items);
+
   // Avoid duplicate function calls with useMemo
-  var filteredList = useMemo(getFilteredList, [category, items]);
+  var filteredList = useMemo(getFilteredList, [category, items, query]);
 
   if (loading) return <Loading />;
   return (
@@ -67,6 +75,7 @@ const Exchange = () => {
               id="inline_field"
               className="nes-input"
               placeholder="Search an item..."
+              onChange={(e) => setQuery(e.target.value)}
             />
           </div>
           <div className="nes-select">
