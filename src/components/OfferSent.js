@@ -65,7 +65,6 @@ const OfferSent = () => {
           );
         })
         .then((response) => {
-          debugger;
           setOffer(response.data);
           setIsLoading(false);
         })
