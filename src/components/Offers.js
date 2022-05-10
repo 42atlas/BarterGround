@@ -153,7 +153,7 @@ const Offers = () => {
   if (loading) return <Loading />;
   return (
     <div className="main-container">
-      <div className="nes-container is-centered with-title">
+      <div className="nes-container is-centered with-title" id="middle-size">
         <h3 className="title"> Trade Center </h3>
         <div className="internal-container">
           <FatMerchantStall />
@@ -161,15 +161,14 @@ const Offers = () => {
           <SwordMerchantNo />
           {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
           <div className="char-div">
-            <div className="nes-container is-rounded with-title">
+            <div
+              className="nes-container is-rounded with-title"
+              id="minus-margin-top-round"
+            >
               <h3 className="title"> Offers Received </h3>
               <div className="infinite-img-x">
                 {recItems.map((offer, index) => (
                   <div key={index} className="infinite-img-x">
-                    {/* <button onClick={() => deleteSelectedItem(item._id)}>
-                    x
-                  </button> */}
-
                     <Link to={`/auth/offerreceived?id=${offer.offer_id}`}>
                       <div
                         className="nes-container with-title"
@@ -190,15 +189,14 @@ const Offers = () => {
                 ))}
               </div>
             </div>
-            <div className="nes-container is-rounded with-title">
+            <div
+              className="nes-container is-rounded with-title"
+              id="margin-top-round"
+            >
               <h3 className="title"> Offers Sent </h3>
               <div className="infinite-img-x">
                 {sentItems.map((offer, index) => (
                   <div key={index} className="infinite-img-x">
-                    {/* <button onClick={() => deleteSelectedOffer(offer._id)}>
-                    x
-                  </button> */}
-
                     <Link to={`/auth/offersent?id=${offer.offer_id}`}>
                       <div
                         className="nes-container with-title"
@@ -222,7 +220,7 @@ const Offers = () => {
           </div>
         </div>
       </div>
-      <div className="nes-container is-centered">
+      <div className="nes-container is-centered " id="middle-size">
         <div className="buttons-container">
           <button
             type="button"
@@ -234,16 +232,16 @@ const Offers = () => {
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={() => navigate("/auth/exchange")}
+            onClick={() => navigate("/auth/home")}
           >
-            Exchange
+            Home
           </button>
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={() => navigate("/auth/home")}
+            onClick={() => navigate("/auth/exchange")}
           >
-            Home
+            Exchange
           </button>
         </div>
       </div>

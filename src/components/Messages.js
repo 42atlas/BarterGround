@@ -93,17 +93,18 @@ const Messages = () => {
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={() => navigate("/auth/Home")}
-          >
-            Home
-          </button>
-          <button
-            type="button"
-            className="nes-btn is-primary"
             onClick={() => navigate("/auth/offers")}
           >
             Offers
           </button>
+          <button
+            type="button"
+            className="nes-btn is-primary"
+            onClick={() => navigate("/auth/Home")}
+          >
+            Home
+          </button>
+
           <button
             type="button"
             className="nes-btn is-primary"

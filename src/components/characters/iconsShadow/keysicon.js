@@ -9,7 +9,7 @@ const KeysIcon = () => {
       <img
         className="Icon_spritesheet_keys pixelart keys"
         src={require("./icons-sprite-sheet.png")}
-        alt="Inn-Keeper Home"
+        alt="Keys"
       />
     </div>
   );

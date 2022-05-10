@@ -333,3 +333,25 @@ h3 {
   object-fit: contain !important;
   
 } */
+
+#minus-margin-top-round {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: -150px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#margin-top-round {
+  margin-top: 50px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+#middle-size {
+  max-width: 1200px;
+}

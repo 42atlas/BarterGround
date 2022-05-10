@@ -152,11 +152,15 @@ const Bid = () => {
               <br />
             </div>
           </div>
+          <br />
+          <br />
           <div>{title}</div>
+          <br />
           <div className="nes-container is-rounded with-title">
             <h3 className="title"> Description </h3>
             {body}
           </div>
+          <br />
           <br />
           <label>Select one or more Items to add to the offer</label>
           <div className="nes-select">
