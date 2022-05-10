@@ -203,21 +203,21 @@ const Bid = () => {
           </button>
         </div>
       </div>
-      <div className="nes-container is-centered">
+      <div className="nes-container is-centered" id="landing">
         <div className="buttons-container">
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={() => navigate("/auth/sendmessage")}
+            onClick={() => navigate("/auth/home")}
           >
-            Send a Message to (name of the user in case)
+            Home
           </button>
           <button
             type="button"
             className="nes-btn is-primary"
             onClick={() => navigate("/auth/exchange")}
           >
-            Back to Exchange
+            Pick Another
           </button>
           <button
             type="button"

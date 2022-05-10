@@ -38,7 +38,7 @@ const Layout = () => {
       <div className="main-container">
         <ButtonContact />
 
-        {/*  <Player url="..\audio\Super 8-bit Battle Song.wav" /> */}
+        <Player />
       </div>
     </>
   );

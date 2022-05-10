@@ -96,7 +96,7 @@ body {
   left: calc(-150px * var(--pixel-size));
 }
 
-/* Sword MErchant NO*/
+/* Sword Merchant NO*/
 
 .Character_swordmerchantno {
   width: calc(19px * var(--pixel-size));
@@ -127,5 +127,38 @@ body {
   }
   to {
     transform: translate3d(-15.4%, 0, 0);
+  }
+}
+
+/*Mage Screaming*/
+
+.Character_magescreaming {
+  width: calc(19px * var(--pixel-size));
+  height: calc(13px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  /* margin: 55px auto 0 auto; */
+  /* background: red; */
+  margin-bottom: 50px;
+  top: calc(15px * var(--pixel-size));
+}
+
+.Character_spritesheet_magescreaming {
+  animation: moveSpritesheetmagescreaming 5s steps(24) infinite;
+  width: calc(700px * var(--pixel-size));
+  position: absolute;
+}
+
+.magescreaming {
+  top: calc(-55px * var(--pixel-size));
+  left: calc(-1px * var(--pixel-size));
+}
+
+@keyframes moveSpritesheetmagescreaming {
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-92.3%, 0, 0);
   }
 }

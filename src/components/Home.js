@@ -30,7 +30,8 @@ const Home = () => {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const { user } = useAuth();
-  //set all + api call | alert class => "nes-text is-warning"
+
+  //set all + api call | alert |class="nes-text is-warning"| id="blinking"
 
   const renderCharacter = (character) => {
     switch (character) {
@@ -80,9 +81,9 @@ const Home = () => {
                 id="alert"
                 onClick={() => navigate("/auth/offers")}
               >
-                <span className={alertOffers}>
+                <span class={alertOffers} /* id="blinking" */>
                   {/* {offers} */} New Offers!!
-                </span>{" "}
+                </span>
                 {/* THIS */}
               </div>
 
@@ -93,7 +94,7 @@ const Home = () => {
               >
                 <span className={alertMessages}>
                   {/* {messages} */} New Messages!!
-                </span>{" "}
+                </span>
                 {/* THIS */}
               </div>
             </div>

@@ -1,0 +1,61 @@
+:root {
+  --pixel-size: 9;
+}
+
+body {
+  background: #ffffff;
+}
+
+.pixelart {
+  image-rendering: pixelated;
+}
+
+/*listed*/
+
+.listeda {
+  width: calc(5px * var(--pixel-size));
+  height: calc(5px * var(--pixel-size));
+  left: calc(17px * var(--pixel-size));
+  top: calc(-3px * var(--pixel-size));
+  overflow: hidden;
+  position: absolute;
+  margin: auto;
+  /* background: red; */
+  margin-bottom: -50px;
+}
+
+.Icon_spritesheet_listed {
+  /*  animation: moveSpritesheetinnkeeper 0.1s steps(1) infinite; */
+  width: calc(5px * var(--pixel-size));
+  position: absolute;
+}
+
+.listed {
+  left: calc(0px * var(--pixel-size));
+  top: calc(0px * var(--pixel-size));
+}
+
+/*del*/
+
+.dela {
+  width: calc(5px * var(--pixel-size));
+  height: calc(5px * var(--pixel-size));
+  left: calc(-2px * var(--pixel-size));
+  top: calc(50px * var(--pixel-size));
+  overflow: hidden;
+  position: absolute;
+  margin: auto;
+  /* background: red; */
+  /* margin-bottom: -50px; */
+}
+
+.Icon_spritesheet_del {
+  /*  animation: moveSpritesheetinnkeeper 0.1s steps(1) infinite; */
+  width: calc(4px * var(--pixel-size));
+  position: absolute;
+}
+
+.dela {
+  left: calc(0px * var(--pixel-size));
+  top: calc(0px * var(--pixel-size));
+}

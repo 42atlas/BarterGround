@@ -78,24 +78,25 @@ const OfferReceived = () => {
   console.log("offerProducts", offerProducts);
   return (
     <div className="main-container">
-      <div className="nes-container is-centered with-title">
-        <h3 className="title"> Offer Sent</h3>
-        <div className="internal-container">
+      <div className="nes-container is-centered with-title" id="landing">
+        <h3 className="title"> Offer Received</h3>
+        <div className="main-container">
           {/* insert avatar + name */}
-          <div className="offers-img-container">
-            <div className="nes-container is-rounded">
-              <img
-                className="item-img-container"
-                src={post.image} /* get img */
-                alt="barter pixel art"
-              />
+
+          <div className="nes-container is-rounded">
+            <div className="storeitem-img">
+              <img className="item-img-container" src={post.image} alt="item" />
             </div>
           </div>
-
+          <br />
+          <br />
+          <div>{post.title}</div>
+          <br />
           <div className="nes-container is-rounded with-title">
             <h3 className="title"> Description </h3>
             {post.body}
           </div>
+          <br />
           <div className="infinite-img-x">
             {offerProducts.map((item) => (
               <div key={item._id} className="infinite-img-x">
@@ -112,39 +113,40 @@ const OfferReceived = () => {
               </div>
             ))}
           </div>
-          <div className="acceptoffer">
-            <button
-              type="button"
-              className="nes-btn is-success"
-              /* onClick={setIsOffer(true)} */
-            >
-              Accept
-            </button>
-            <button
-              type="button"
-              className="nes-btn is-error"
-              /*  onClick={setIsOffer(false)} */
-            >
-              Decline
-            </button>
-          </div>
+          <br />
         </div>
-      </div>
-      <div className="nes-container is-centered">
-        <div className="buttons-container">
+        <div className="flexibutton">
           <button
             type="button"
-            className="nes-btn is-primary"
-            onClick={() => navigate("/auth/sendmessage")}
+            className="nes-btn is-success"
+            /* onClick={setIsOffer(true)} */
           >
-            Send a Message to (name of the user in case)
+            Accept
           </button>
+          <button
+            type="button"
+            className="nes-btn is-error"
+            /*  onClick={setIsOffer(false)} */
+          >
+            Decline
+          </button>
+        </div>
+      </div>
+      <div className="nes-container is-centered" id="landing">
+        <div className="buttons-container">
           <button
             type="button"
             className="nes-btn is-primary"
             onClick={() => navigate("/auth/offers")}
           >
-            Back to Offers
+            Back
+          </button>
+          <button
+            type="button"
+            className="nes-btn is-primary"
+            onClick={() => navigate("/auth/Items")}
+          >
+            Treasure
           </button>
           <button
             type="button"

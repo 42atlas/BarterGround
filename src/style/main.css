@@ -273,6 +273,8 @@ h3 {
 
 .send-msg {
   display: flex;
+  align-items: baseline;
+  justify-content: center;
 }
 
 .offers-img-container {
@@ -354,4 +356,68 @@ h3 {
 
 #middle-size {
   max-width: 1200px;
+}
+
+#smaller-btn {
+  max-width: 400px;
+}
+
+button {
+  min-width: 150px;
+}
+
+@keyframes blinking {
+  0% {
+    color: green;
+  }
+  20% {
+    color: red;
+  }
+  40% {
+    color: blue;
+  }
+  60% {
+    color: yellow;
+  }
+  80% {
+    color: purple;
+  }
+  100% {
+    color: cyan;
+  }
+}
+#blinking {
+  width: 200px;
+  height: 200px;
+  animation: blinking 0.4s infinite;
+}
+
+#is-error {
+  color: #ce372b;
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
+      14 0,
+    pointer;
+  display: inline-block;
+  width: 10.5em;
+  height: 1.875em;
+  margin: 0.5em;
+  font-size: 0.9em;
+  /* white-space: nowrap;
+  vertical-align: top;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;*/
+  border-color: #000;
+  border-style: outset;
+}
+
+#cek {
+  width: 50px;
+  padding-bottom: 20px;
+}
+
+.flexibutton {
+  display: flex;
+  justify-content: space-evenly;
 }
