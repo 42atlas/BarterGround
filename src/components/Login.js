@@ -32,6 +32,13 @@ const Login = () => {
     await loginUser({ email, password });
   };
 
+  const handleKeypress = (e) => {
+    //it triggers by pressing the enter key
+    if (e.keyCode === 13) {
+      handleSubmit();
+    }
+  };
+
   /*  const handlePasswordLost = setPwd(!pwd);
   
   const form = useRef();
@@ -120,6 +127,7 @@ const Login = () => {
             type="submit"
             className="nes-btn is-primary"
             onClick={handleSubmit}
+            onKeyPress={handleKeypress}
           >
             OK
           </button>

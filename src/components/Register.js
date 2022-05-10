@@ -25,6 +25,10 @@ const Register = () => {
   const [selected, setSelected] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [classField, setClassField] = useState("nes-input");
+  const [newsletter, setNewsletter] = useState(true);
+
+  const handleNewsletter = () => setNewsletter(!newsletter);
+  console.log(newsletter);
 
   const [{ character, name, email, password }, setFormState] = useState({
     character: "",
@@ -253,7 +257,12 @@ const Register = () => {
               </div>
               <br></br>
               <label>
-                <input type="checkbox" className="nes-checkbox" />
+                <input
+                  type="checkbox"
+                  className="nes-checkbox"
+                  onChange={handleNewsletter}
+                  checked={newsletter}
+                />
                 <span>Receive very random emails from us !?!</span>
               </label>
               <br></br>

@@ -36,7 +36,7 @@ const Messages = () => {
   const deleteSelectedMessage = async (id) => {
     try {
       await axios.delete(
-        `${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/${id}`,
+        `${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/${id}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -45,7 +45,7 @@ const Messages = () => {
         }
       );
       const { data } = await axios.get(
-        `${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/${user._id}`
+        `${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/user/${user._id}`
       );
       console.log(data);
       setMessages(data);
@@ -78,11 +78,11 @@ const Messages = () => {
                       {message.title}
                     </h3>
                     {message.body}
-                    <button onClick={() => deleteSelectedMessage(message._id)}>
-                      x
-                    </button>
                   </div>
                 </Link>
+                <button onClick={() => deleteSelectedMessage(message._id)}>
+                  x
+                </button>
               </div>
             ))}
           </div>

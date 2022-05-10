@@ -6,6 +6,9 @@ import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import Loading from "./Loading";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import FatMerchantSelling from "./characters/Merchants/FatMerchantSelling";
+import FatMerchantStall from "./characters/Merchants/FatMerchantStall";
+import SwordMerchantNo from "./characters/Merchants/SwordMerchantNo";
 
 const Offers = () => {
   const [received, setReceived] = useState([]);
@@ -153,68 +156,68 @@ const Offers = () => {
       <div className="nes-container is-centered with-title">
         <h3 className="title"> Trade Center </h3>
         <div className="internal-container">
-          <img
-            className="main-img"
-            src={require("../images/logo.webp")}
-            alt="barter pixel art"
-          />
+          <FatMerchantStall />
+          <FatMerchantSelling />
+          <SwordMerchantNo />
           {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
-          <div className="nes-container is-rounded with-title">
-            <h3 className="title"> Offers Received </h3>
-            <div className="infinite-img-x">
-              {recItems.map((offer, index) => (
-                <div key={index} className="infinite-img-x">
-                  {/* <button onClick={() => deleteSelectedItem(item._id)}>
+          <div className="char-div">
+            <div className="nes-container is-rounded with-title">
+              <h3 className="title"> Offers Received </h3>
+              <div className="infinite-img-x">
+                {recItems.map((offer, index) => (
+                  <div key={index} className="infinite-img-x">
+                    {/* <button onClick={() => deleteSelectedItem(item._id)}>
                     x
                   </button> */}
 
-                  <Link to={`/auth/offerreceived?id=${offer.offer_id}`}>
-                    <div
-                      className="nes-container with-title"
-                      id="item-img-container"
-                    >
-                      <h3 className="title" id="smallfont">
-                        {offer.title}
-                      </h3>
+                    <Link to={`/auth/offerreceived?id=${offer.offer_id}`}>
+                      <div
+                        className="nes-container with-title"
+                        id="item-img-container"
+                      >
+                        <h3 className="title" id="smallfont">
+                          {offer.title}
+                        </h3>
 
-                      <img
-                        className="item-img"
-                        src={offer.image}
-                        alt="item img"
-                      />
-                    </div>
-                  </Link>
-                </div>
-              ))}
+                        <img
+                          className="item-img"
+                          src={offer.image}
+                          alt="item img"
+                        />
+                      </div>
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-          <div className="nes-container is-rounded with-title">
-            <h3 className="title"> Offers Sent </h3>
-            <div className="infinite-img-x">
-              {sentItems.map((offer, index) => (
-                <div key={index} className="infinite-img-x">
-                  {/* <button onClick={() => deleteSelectedOffer(offer._id)}>
+            <div className="nes-container is-rounded with-title">
+              <h3 className="title"> Offers Sent </h3>
+              <div className="infinite-img-x">
+                {sentItems.map((offer, index) => (
+                  <div key={index} className="infinite-img-x">
+                    {/* <button onClick={() => deleteSelectedOffer(offer._id)}>
                     x
                   </button> */}
 
-                  <Link to={`/auth/offersent?id=${offer.offer_id}`}>
-                    <div
-                      className="nes-container with-title"
-                      id="item-img-container"
-                    >
-                      <h3 className="title" id="smallfont">
-                        {offer.title}
-                      </h3>
+                    <Link to={`/auth/offersent?id=${offer.offer_id}`}>
+                      <div
+                        className="nes-container with-title"
+                        id="item-img-container"
+                      >
+                        <h3 className="title" id="smallfont">
+                          {offer.title}
+                        </h3>
 
-                      <img
-                        className="item-img"
-                        src={offer.image}
-                        alt="item img"
-                      />
-                    </div>
-                  </Link>
-                </div>
-              ))}
+                        <img
+                          className="item-img"
+                          src={offer.image}
+                          alt="item img"
+                        />
+                      </div>
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
