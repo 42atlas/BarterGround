@@ -4,6 +4,7 @@ import "../style/main.css";
 import "nes.css/css/nes.min.css";
 import { useNavigate } from "react-router-dom";
 import ErrorMessage from "./ErrorMessage/ErrorMessage";
+import MapIcon from "./characters/iconsShadow/mapicon";
 
 const Contact = () => {
   const [error, setError] = useState(false);
@@ -59,6 +60,7 @@ const Contact = () => {
           </h2>
         </div>
         <br />
+        <MapIcon />
         {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
         <form className="form-register" ref={form}>
           <br />

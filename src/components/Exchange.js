@@ -15,9 +15,7 @@ const Exchange = () => {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [{ category }, setFormState] = useState({
-    category: "",
-  });
+  const [category, setCategory] = useState("");
   const [query, setQuery] = useState("");
 
   const getItems = useCallback(async () => {
@@ -43,25 +41,15 @@ const Exchange = () => {
     getItems();
   }, []);
 
-  const handleInputChange = (e) =>
-    setFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  const handleInputChange = (e) => setCategory(e.target.value);
 
   function getFilteredList() {
-    // Avoid filter when selectedCategory is null
-    if (!category || query === "") {
-      return items;
-    } else {
-      return (
-        items.filter((item) => item.category === category) &&
-        items.title.toLowerCase().includes(query.toLowerCase())
+    return items
+      .filter((item) => (category ? item.category === category : true))
+      .filter((item) =>
+        query ? item.title.toLowerCase().includes(query.toLowerCase()) : true
       );
-    }
   }
-
-  console.log(items);
-
-  // Avoid duplicate function calls with useMemo
-  var filteredList = useMemo(getFilteredList, [category, items, query]);
 
   if (loading) return <Loading />;
   return (
@@ -78,6 +66,7 @@ const Exchange = () => {
               onChange={(e) => setQuery(e.target.value)}
             />
           </div>
+          <br />
           <div className="nes-select">
             <select id="category" value={category} onChange={handleInputChange}>
               <option value="" disabled="" selected="" hidden="yes">
@@ -131,7 +120,7 @@ const Exchange = () => {
             </select>
           </div>
           <div className="infinite-img-x">
-            {filteredList.map((item) => (
+            {getFilteredList().map((item) => (
               <div key={item._id} className="infinite-img-x">
                 {/*offered ITEMS Gallery*/}
                 <Link to={`/auth/bid?id=${item._id}`}>
@@ -160,6 +149,7 @@ const Exchange = () => {
           >
             Home
           </button>
+
           <button
             type="button"
             className="nes-btn is-primary"
