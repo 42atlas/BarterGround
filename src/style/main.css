@@ -99,6 +99,18 @@
   align-items: baseline;
 }
 
+#msg-img-container {
+  /* display: flex;
+  flex-direction: column; */
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
+      14 0,
+    pointer;
+
+  max-height: 193.2px;
+  width: auto;
+  align-items: baseline;
+}
+
 #fat-container {
   height: 193.2px;
   width: 184px;
@@ -240,9 +252,18 @@ h3 {
   flex-wrap: wrap;
 }
 
+.infinite-img-x-marg {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-right: 10px;
+}
+
 .infinite-img-y {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .infinite-msg-y {
@@ -294,7 +315,7 @@ h3 {
 }
 
 #smallfont {
-  font-size: small;
+  font-size: 11px;
 }
 
 .settings-char-container {

@@ -211,7 +211,7 @@ const Register = () => {
             {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
             <div className="form-register">
               <div className="nes-field">
-                <label for="name_field" htmlFor="name" className="form-label">
+                <label htmlFor="name" className="form-label">
                   Give it a Name:
                 </label>
                 <input

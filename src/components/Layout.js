@@ -27,7 +27,7 @@ const Layout = () => {
             id="small-margin"
             onClick={logout}
           >
-            Quit
+            QUIT
           </button>
         ) : (
           <i className="nes-icon is-small star" id="small-margin"></i>
