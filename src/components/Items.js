@@ -6,6 +6,8 @@ import Loading from "./Loading";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import ErrorMessage from "./ErrorMessage/ErrorMessage";
+import Listed from "./characters/iconsmine/listedicon";
+import Delete from "./characters/iconsmine/deleteicon";
 
 const Items = () => {
   const navigate = useNavigate();
@@ -71,22 +73,22 @@ const Items = () => {
             alt="chest pixel art"
           />
         </div>
+
         {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
         <div className="internal-container">
           <div className="infinite-img-x">
             {items.map((item) => (
               <div key={item._id} className="infinite-img-x">
                 {/*personal ITEMS Gallery*/}
-                <button onClick={() => deleteSelectedItem(item._id)}>x</button>
-                {item.isListed && <span>Listed: True </span>}
-                {!item.isListed && <span>Listed: False </span>}
+
+                <Delete onClick={() => deleteSelectedItem(item._id)} />
                 <Link to={`/auth/storeitem?id=${item._id}`}>
                   <div
                     className="nes-container with-title"
                     id="item-img-container"
                   >
                     <h3 className="title" id="smallfont">
-                      {item.title}
+                      {item.title} {item.isListed && <Listed />}
                     </h3>
 
                     <img className="item-img" src={item.image} alt="item img" />

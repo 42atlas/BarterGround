@@ -1,33 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 
-const useAudio = (url) => {
-  const [audio] = useState(new Audio(url));
-  const [playing, setPlaying] = useState(false);
+// Import your audio file
+import song from "../audio/BattleSong.wav";
 
-  const toggle = () => setPlaying(!playing);
+class Player extends Component {
+  // Create state
+  state = {
+    // Get audio file in a variable
+    audio: new Audio(song),
 
-  useEffect(() => {
-    playing ? audio.play() : audio.pause();
-  }, [playing]);
+    // Set initial state of song
+    isPlaying: false,
+  };
 
-  useEffect(() => {
-    audio.addEventListener("ended", () => setPlaying(false));
-    return () => {
-      audio.removeEventListener("ended", () => setPlaying(false));
-    };
-  }, []);
+  // Main function to handle both play and pause operations
+  playPause = () => {
+    // Get state of song
+    let isPlaying = this.state.isPlaying;
 
-  return [playing, toggle];
-};
+    if (isPlaying) {
+      // Pause the song if it is playing
+      this.state.audio.pause();
+    } else {
+      // Play the song if it is paused
+      this.state.audio.play();
+    }
 
-const Player = ({ url }) => {
-  const [playing, toggle] = useAudio(url);
+    // Change the state of song
+    this.setState({ isPlaying: !isPlaying });
+  };
 
-  return (
-    <div>
-      <button onClick={toggle}>{playing ? "Pause" : "Play"}</button>
-    </div>
-  );
-};
+  render() {
+    return (
+      <div>
+        {/* Button to call our main function */}
+        <button onClick={this.playPause}>
+          {this.state.isPlaying ? "PAUSE" : "PLAY"}
+        </button>
+      </div>
+    );
+  }
+}
 
 export default Player;
