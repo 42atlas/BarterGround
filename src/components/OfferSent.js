@@ -122,7 +122,7 @@ const OfferSent = () => {
               </div>
             ))}
           </div>
-
+          <br />
           <div className="acceptoffer">
             <button
               type="button"
