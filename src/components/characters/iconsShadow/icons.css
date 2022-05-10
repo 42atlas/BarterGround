@@ -53,3 +53,25 @@ body {
   left: calc(-301px * var(--pixel-size));
   top: calc(-326px * var(--pixel-size));
 }
+
+/*ocarina*/
+
+.Icon_ocarina {
+  width: calc(60px * var(--pixel-size));
+  height: calc(60px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  /* background: red; */
+}
+
+.Icon_spritesheet_ocarina {
+  /*  animation: moveSpritesheetinnkeeper 0.1s steps(1) infinite; */
+  width: calc(900px * var(--pixel-size));
+  position: absolute;
+}
+
+.ocarina {
+  left: calc(-280px * var(--pixel-size));
+  top: calc(-618px * var(--pixel-size));
+}

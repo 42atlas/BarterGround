@@ -82,14 +82,18 @@ const Messages = () => {
                     {message.body}
                   </div>
                 </Link>
-                <button onClick={() => deleteSelectedMessage(message._id)}>
-                  x
-                </button>
+                <span
+                  id="is-error"
+                  onClick={() => deleteSelectedMessage(message._id)}
+                >
+                  DELETE
+                </span>
               </div>
             ))}
           </div>
         </div>
       </div>
+
       <div className="nes-container is-centered" id="middle-size">
         <div className="buttons-container">
           <button

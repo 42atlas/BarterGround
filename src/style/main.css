@@ -273,8 +273,9 @@ h3 {
 
 .send-msg {
   display: flex;
-  align-items: baseline;
-  justify-content: center;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  /* justify-content: space-evenly; */
 }
 
 .offers-img-container {
@@ -420,4 +421,8 @@ button {
 .flexibutton {
   display: flex;
   justify-content: space-evenly;
+}
+
+.blockbox {
+  display: block;
 }

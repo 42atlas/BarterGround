@@ -35,9 +35,11 @@ const SendMessage = () => {
       <div className="nes-container is-centered with-title" id="middle-size">
         <h3 className="title"> Send Message </h3>
 
-        <div className="internal-container">
+        <div className="main-container">
           <div className="send-msg">
-            <MageScreaming />
+            <div id="fat-container">
+              <MageScreaming />
+            </div>
             <div id="speech-bubble">
               <textArea
                 className="text-area-message"

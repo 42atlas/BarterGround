@@ -6,6 +6,7 @@ import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import { useAuth } from "../context/AuthContext";
 import Loading from "./Loading";
 import axios from "axios";
+import Ocarina from "./characters/iconsShadow/ocarina";
 
 const StoreItem = () => {
   const navigate = useNavigate();
@@ -163,11 +164,11 @@ const StoreItem = () => {
         <div className="main-container">
           <div className="nes-container is-rounded">
             <div className="storeitem-img">
-              <img
-                className="item-img"
-                src={image ? image : require("../images/logo.webp")}
-                alt="Item"
-              />
+              {image ? (
+                <img className="item-img" src={image} alt="Item" />
+              ) : (
+                <Ocarina />
+              )}
               <br />
 
               <label className="nes-btn">
