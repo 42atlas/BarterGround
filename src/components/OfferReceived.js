@@ -10,11 +10,12 @@ import axios from "axios";
 const OfferReceived = () => {
   const navigate = useNavigate();
   const search = useLocation().search;
-  const id = new URLSearchParams(search).get("id");
-  const [isOffer, setIsOffer] = useState();
-
-  const [errorMessage, setErrorMessage] = useState("");
+  const [post, setPost] = useState(null);
+  const [offerProducts, setOfferProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const id = new URLSearchParams(search).get("id");
 
   /*   const [values, setValues] = useState([2]);
   const [status, setStatus] = useState("is-success");
@@ -44,24 +45,37 @@ const OfferReceived = () => {
     if (id) {
       axios
         .get(`${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/${id}`)
+        .then(async (response) => {
+          const offeredProductsDetails = await Promise.all(
+            response.data.offeredProducts.map(async (offeredProduct) => {
+              let productDetails = await axios.get(
+                `${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/${offeredProduct}`
+              );
+              return productDetails.data;
+            })
+          );
+
+          setOfferProducts(offeredProductsDetails);
+          return axios.get(
+            `${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/${response.data.product}`
+          );
+        })
         .then((response) => {
-          /* var result = response.data;
-          setFormState({
-            title: result.title,
-            body: result.body,
-            category: result.category,
-          });
-          setIsListed(result.isListed);
-          setImage(result.image);
-          setIsSubmitBtn(false); */
-          console.log(response.data);
+          setPost(response.data);
+          setIsLoading(false);
         })
         .catch((err) => {
           console.log(err);
+          setIsLoading(false);
         });
     }
   }, [id]);
+  if (isLoading) {
+    return <Loading />;
+  }
 
+  console.log("post", post);
+  console.log("offerProducts", offerProducts);
   return (
     <div className="main-container">
       <div className="nes-container is-centered with-title">
@@ -71,8 +85,8 @@ const OfferReceived = () => {
           <div className="offers-img-container">
             <div className="nes-container is-rounded">
               <img
-                className="main-img"
-                src={require("../images/logo.webp")} /* get img */
+                className="item-img-container"
+                src={post.image} /* get img */
                 alt="barter pixel art"
               />
             </div>
@@ -80,13 +94,11 @@ const OfferReceived = () => {
 
           <div className="nes-container is-rounded with-title">
             <h3 className="title"> Description </h3>
-            BLA1 BLA2 {/* get description */}
+            {post.body}
           </div>
           <div className="infinite-img-x">
-            {/*  {items.map((item) => (
+            {offerProducts.map((item) => (
               <div key={item._id} className="infinite-img-x">
-                
-
                 <div
                   className="nes-container with-title"
                   id="item-img-container"
@@ -98,7 +110,7 @@ const OfferReceived = () => {
                   <img className="item-img" src={item.image} alt="item img" />
                 </div>
               </div>
-            ))} */}
+            ))}
           </div>
           <div className="acceptoffer">
             <button

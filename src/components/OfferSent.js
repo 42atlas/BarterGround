@@ -12,6 +12,9 @@ const OfferSent = () => {
   const search = useLocation().search;
   const id = new URLSearchParams(search).get("id");
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [offer, setOffer] = useState(null);
+  const [offerProducts, setOfferProducts] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [error, setError] = useState(false);
   const [sentItems, setSentItems] = useState([]);
@@ -42,59 +45,41 @@ const OfferSent = () => {
     onChange: setValues,
   }); */
 
-  //const modifyOffer =
-  //const removeOffer =
-
-  /*   useEffect(() => {
+  useEffect(() => {
     if (id) {
       axios
         .get(`${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/${id}`)
-        .then((response) => {
-      
+        .then(async (response) => {
+          const offeredProductsDetails = await Promise.all(
+            response.data.offeredProducts.map(async (offeredProduct) => {
+              let productDetails = await axios.get(
+                `${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/${offeredProduct}`
+              );
+              return productDetails.data;
+            })
+          );
 
-          console.log(response.data);
+          setOfferProducts(offeredProductsDetails);
+          return axios.get(
+            `${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/${response.data.product}`
+          );
+        })
+        .then((response) => {
+          debugger;
+          setOffer(response.data);
+          setIsLoading(false);
         })
         .catch((err) => {
           console.log(err);
+          setIsLoading(false);
         });
     }
-  }, [id]); */
-
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: localStorage.getItem("token"),
-      },
-    })
-      .then((resSentOffers) => resSentOffers.json())
-      .then((dataSentOffers) => {
-        console.log("Sent: ", dataSentOffers);
-        var arr = [];
-        dataSentOffers.forEach(async (offer, index) => {
-          try {
-            const { data } = await axios.get(
-              `${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/${offer.product}`
-            );
-            data.offer_id = offer._id;
-            arr.push(data);
-            console.log(arr);
-            if (arr.length === dataSentOffers.length) {
-              //setSentItems([]);
-              setSentItems(arr);
-              console.log("Set me to state");
-            }
-          } catch (error) {
-            console.log(error.response?.data.error || error.message);
-            setError(true);
-            setErrorMessage("SOMETHING WENT WRONG !");
-          }
-        });
-      });
-  }, []);
-
+  }, [id]);
+  if (isLoading) {
+    return <Loading />;
+  }
   const deleteOffer = async (id) => {};
-
+  console.log("offer", offer);
   return (
     <div className="main-container">
       <div className="nes-container is-centered with-title">
@@ -104,8 +89,8 @@ const OfferSent = () => {
           <div className="offers-img-container">
             <div className="nes-container is-rounded">
               <img
-                className="main-img"
-                src={require("../images/logo.webp")} /* get img */
+                className="item-img-container"
+                src={offer.image} /* get img */
                 alt="barter pixel art"
               />
             </div>
@@ -113,13 +98,11 @@ const OfferSent = () => {
 
           <div className="nes-container is-rounded with-title">
             <h3 className="title"> Description </h3>
-            BLA1 BLA2 {/* get description */}
+            {offer.body}
           </div>
           <div className="infinite-img-x">
-            {/*  {items.map((item) => (
+            {offerProducts.map((item) => (
               <div key={item._id} className="infinite-img-x">
-                
-
                 <div
                   className="nes-container with-title"
                   id="item-img-container"
@@ -131,7 +114,7 @@ const OfferSent = () => {
                   <img className="item-img" src={item.image} alt="item img" />
                 </div>
               </div>
-            ))} */}
+            ))}
           </div>
 
           <div className="acceptoffer">

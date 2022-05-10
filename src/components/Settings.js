@@ -29,9 +29,9 @@ const Settings = () => {
   const { user } = useAuth();
 
   const [{ character, name, email, password }, setFormState] = useState({
-    character: "",
-    name: "",
-    email: "",
+    character: user?.character,
+    name: user?.name,
+    email: user?.email,
     password: "",
   });
 
@@ -118,7 +118,7 @@ const Settings = () => {
                 type="text"
                 id="name"
                 name="username"
-                value={name}
+                value={name || user.name}
                 onChange={handleChange}
                 className="nes-input"
               />
@@ -132,9 +132,10 @@ const Settings = () => {
                 type="email"
                 id="email"
                 name="e-mail"
-                value={email}
+                value={email || user.email}
                 onChange={handleChange}
                 className="nes-input"
+                disabled={true}
               />
             </div>
             <br></br>
@@ -146,7 +147,7 @@ const Settings = () => {
                 type="password"
                 id="password"
                 name="pwd"
-                value={password}
+                value={password || user.password}
                 onChange={handleChange}
                 className="nes-input"
               />
@@ -156,7 +157,7 @@ const Settings = () => {
             <div className="nes-select">
               <select
                 id="character"
-                value={character}
+                value={character || user.character}
                 onChange={handleChange}
                 /* character={character} */
               >
