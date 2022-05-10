@@ -60,7 +60,7 @@ const Messages = () => {
   if (loading) return <Loading />;
   return (
     <div className="main-container">
-      <div className="nes-container is-centered with-title">
+      <div className="nes-container is-centered with-title" id="middle-size">
         <h3 className="title"> Messages </h3>
 
         <div className="internal-container">
@@ -88,15 +88,8 @@ const Messages = () => {
           </div>
         </div>
       </div>
-      <div className="nes-container is-centered">
+      <div className="nes-container is-centered" id="middle-size">
         <div className="buttons-container">
-          <button
-            type="button"
-            className="nes-btn is-primary"
-            onClick={() => navigate("/auth/offers")}
-          >
-            Offers
-          </button>
           <button
             type="button"
             className="nes-btn is-primary"
@@ -104,13 +97,20 @@ const Messages = () => {
           >
             Home
           </button>
-
           <button
             type="button"
             className="nes-btn is-primary"
             onClick={() => navigate("/auth/exchange")}
           >
             Exchange
+          </button>
+
+          <button
+            type="button"
+            className="nes-btn is-primary"
+            onClick={() => navigate("/auth/offers")}
+          >
+            Offers
           </button>
         </div>
       </div>

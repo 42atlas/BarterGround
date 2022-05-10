@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "../style/main.css";
 import "nes.css/css/nes.min.css";
-import { useNavigate, Navigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Loading from "./Loading";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import Listed from "./characters/iconsmine/listedicon";
-import Delete from "./characters/iconsmine/deleteicon";
 
 const Items = () => {
   const navigate = useNavigate();
-  const [isChecked, setIsChecked] = useState(false);
+
   const { user, loading } = useAuth();
   const [items, setItems] = useState([]);
 
@@ -73,34 +72,53 @@ const Items = () => {
             alt="chest pixel art"
           />
         </div>
-
         {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
+        <br />
+        <img
+          src={require("./characters/iconsmine/listed.png")}
+          alt="is cek"
+          id="cek"
+        />{" "}
+        = IS LISTED
         <div className="internal-container">
           <div className="infinite-img-x">
             {items.map((item) => (
-              <div key={item._id} className="infinite-img-x">
-                {/*personal ITEMS Gallery*/}
+              <div>
+                <div key={item._id} className="infinite-img-x">
+                  {/*personal ITEMS Gallery*/}
 
-                <Delete onClick={() => deleteSelectedItem(item._id)} />
-                <Link to={`/auth/storeitem?id=${item._id}`}>
-                  <div
-                    className="nes-container with-title"
-                    id="item-img-container"
+                  <Link to={`/auth/storeitem?id=${item._id}`}>
+                    <div
+                      className="nes-container with-title"
+                      id="item-img-container"
+                    >
+                      <h3 className="title" id="smallfont">
+                        {item.title} {item.isListed && <Listed />}
+                      </h3>
+
+                      <img
+                        className="item-img"
+                        src={item.image}
+                        alt="item img"
+                      />
+                    </div>
+                  </Link>
+                </div>
+                <div>
+                  <span
+                    id="is-error"
+                    onClick={() => deleteSelectedItem(item._id)}
                   >
-                    <h3 className="title" id="smallfont">
-                      {item.title} {item.isListed && <Listed />}
-                    </h3>
-
-                    <img className="item-img" src={item.image} alt="item img" />
-                  </div>
-                </Link>
+                    ERASE
+                  </span>
+                </div>
               </div>
             ))}
           </div>
           <br />
           <button
             type="button"
-            className="nes-btn is-primary"
+            className="nes-btn is-success"
             onClick={() => navigate("/auth/storeitem")}
           >
             Store an Item

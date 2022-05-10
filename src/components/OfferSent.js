@@ -79,30 +79,36 @@ const OfferSent = () => {
     return <Loading />;
   }
   const deleteOffer = async (id) => {};
+
   console.log("offer", offer);
   return (
     <div className="main-container">
-      <div className="nes-container is-centered with-title">
+      <div className="nes-container is-centered with-title" id="landing">
         <h3 className="title"> Offer Sent</h3>
-        <div className="internal-container">
+        <div className="main-container">
           {/* insert avatar + name */}
-          <div className="offers-img-container">
-            <div className="nes-container is-rounded">
+
+          <div className="nes-container is-rounded">
+            <div className="storeitem-img">
               <img
                 className="item-img-container"
                 src={offer.image} /* get img */
-                alt="barter pixel art"
+                alt="item"
               />
             </div>
           </div>
-
+          <br />
+          <br />
+          <div>{offer.title}</div>
+          <br />
           <div className="nes-container is-rounded with-title">
             <h3 className="title"> Description </h3>
             {offer.body}
           </div>
+          <br />
           <div className="infinite-img-x">
             {offerProducts.map((item) => (
-              <div key={item._id} className="infinite-img-x">
+              <div key={item._id} className="infinite-img-x-marg">
                 <div
                   className="nes-container with-title"
                   id="item-img-container"
@@ -120,30 +126,31 @@ const OfferSent = () => {
           <div className="acceptoffer">
             <button
               type="button"
-              className="nes-btn is-warning"
+              className="nes-btn is-error"
               /* onClick={deleteOffer} */
             >
-              Delete
+              Delete the Offer
             </button>
           </div>
         </div>
       </div>
-      <div className="nes-container is-centered">
+      <div className="nes-container is-centered" id="landing">
         <div className="buttons-container">
-          <button
-            type="button"
-            className="nes-btn is-primary"
-            onClick={() => navigate("/auth/sendmessage")}
-          >
-            Send a Message to (name of the user in case)
-          </button>
           <button
             type="button"
             className="nes-btn is-primary"
             onClick={() => navigate("/auth/offers")}
           >
-            Back to Offers
+            Back
           </button>
+          <button
+            type="button"
+            className="nes-btn is-primary"
+            onClick={() => navigate("/auth/items")}
+          >
+            Treasure
+          </button>
+
           <button
             type="button"
             className="nes-btn is-primary"

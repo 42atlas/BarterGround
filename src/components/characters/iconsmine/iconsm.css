@@ -41,12 +41,12 @@ body {
   width: calc(5px * var(--pixel-size));
   height: calc(5px * var(--pixel-size));
   left: calc(-2px * var(--pixel-size));
-  top: calc(18px * var(--pixel-size));
+  top: calc(50px * var(--pixel-size));
   overflow: hidden;
   position: absolute;
   margin: auto;
   /* background: red; */
-  margin-bottom: -50px;
+  /* margin-bottom: -50px; */
 }
 
 .Icon_spritesheet_del {
@@ -55,7 +55,7 @@ body {
   position: absolute;
 }
 
-.del {
+.dela {
   left: calc(0px * var(--pixel-size));
   top: calc(0px * var(--pixel-size));
 }
