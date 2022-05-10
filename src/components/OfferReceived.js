@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../style/main.css";
 import "nes.css/css/nes.min.css";
-import { useNavigate, Navigate } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate, Navigate, useLocation } from "react-router-dom";
+import ErrorMessage from "./ErrorMessage/ErrorMessage";
+import { useAuth } from "../context/AuthContext";
+import Loading from "./Loading";
+import axios from "axios";
 
 const OfferReceived = () => {
   const navigate = useNavigate();
+  const search = useLocation().search;
+  const id = new URLSearchParams(search).get("id");
   const [isOffer, setIsOffer] = useState();
+
+  const [errorMessage, setErrorMessage] = useState("");
+  const [error, setError] = useState(false);
 
   /*   const [values, setValues] = useState([2]);
   const [status, setStatus] = useState("is-success");
@@ -32,10 +40,32 @@ const OfferReceived = () => {
     onChange: setValues,
   }); */
 
+  useEffect(() => {
+    if (id) {
+      axios
+        .get(`${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/${id}`)
+        .then((response) => {
+          /* var result = response.data;
+          setFormState({
+            title: result.title,
+            body: result.body,
+            category: result.category,
+          });
+          setIsListed(result.isListed);
+          setImage(result.image);
+          setIsSubmitBtn(false); */
+          console.log(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [id]);
+
   return (
     <div className="main-container">
       <div className="nes-container is-centered with-title">
-        <h3 className="title"> Offer Received </h3>
+        <h3 className="title"> Offer Sent</h3>
         <div className="internal-container">
           {/* insert avatar + name */}
           <div className="offers-img-container">
@@ -45,37 +75,43 @@ const OfferReceived = () => {
                 src={require("../images/logo.webp")} /* get img */
                 alt="barter pixel art"
               />
-              <div className="infinite-img-x">
-                {/* creare elemento per immagini e collegarlo ad API */}
-              </div>
             </div>
           </div>
 
-          <progress>{/* get progress api */}</progress>
-
           <div className="nes-container is-rounded with-title">
             <h3 className="title"> Description </h3>
-            BLA1 BLA2
+            BLA1 BLA2 {/* get description */}
           </div>
-          <select id="default_select">
-            <option value="" disabled="" selected="" hidden="">
-              Select...
-            </option>
-            <option value="0">Cat1</option>
-            <option value="1">Cat2</option>
-          </select>
+          <div className="infinite-img-x">
+            {/*  {items.map((item) => (
+              <div key={item._id} className="infinite-img-x">
+                
+
+                <div
+                  className="nes-container with-title"
+                  id="item-img-container"
+                >
+                  <h3 className="title" id="smallfont">
+                    {item.title}
+                  </h3>
+
+                  <img className="item-img" src={item.image} alt="item img" />
+                </div>
+              </div>
+            ))} */}
+          </div>
           <div className="acceptoffer">
             <button
               type="button"
               className="nes-btn is-success"
-              onClick={setIsOffer(true)}
+              /* onClick={setIsOffer(true)} */
             >
               Accept
             </button>
             <button
               type="button"
               className="nes-btn is-error"
-              onClick={setIsOffer(false)}
+              /*  onClick={setIsOffer(false)} */
             >
               Decline
             </button>

@@ -7,7 +7,6 @@ import Loading from "./Loading";
 
 const SendMessage = () => {
   const navigate = useNavigate();
-  /* sendMessage= something */
 
   return (
     <div className="main-container">
@@ -16,13 +15,12 @@ const SendMessage = () => {
 
         <div className="internal-container">
           <div className="send-msg">
-            {/* select / type user */}
-            {/* creare elemento per messaggi e collegarlo ad API / msg-containers click on msg go to msg send/edit*/}
+            {/* here goes the message to edit then send */}
           </div>
           <button
             type="button"
             className="nes-btn is-success"
-          /* onClick={sendMessage} */
+            /* onClick={sendMessage} */
           >
             Send Message
           </button>
@@ -33,21 +31,21 @@ const SendMessage = () => {
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/auth/home")}
+            onClick={() => navigate("/auth/home")}
           >
             Home
           </button>
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/auth/offers")}
+            onClick={() => navigate("/auth/offers")}
           >
             Offers
           </button>
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={navigate("/auth/messages")}
+            onClick={() => navigate("/auth/messages")}
           >
             Messages
           </button>

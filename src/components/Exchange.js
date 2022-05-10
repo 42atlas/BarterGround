@@ -124,7 +124,7 @@ const Exchange = () => {
           <div className="infinite-img-x">
             {filteredList.map((item) => (
               <div key={item._id} className="infinite-img-x">
-                {/*all ITEMS Gallery*/}
+                {/*offered ITEMS Gallery*/}
                 <Link to={`/auth/bid?id=${item._id}`}>
                   <div
                     className="nes-container with-title"
@@ -147,17 +147,18 @@ const Exchange = () => {
           <button
             type="button"
             className="nes-btn is-primary"
-            onClick={() => navigate("/auth/storeitem")}
-          >
-            List your Item
-          </button>
-          <button
-            type="button"
-            className="nes-btn is-primary"
             onClick={() => navigate("/auth/home")}
           >
             Home
           </button>
+          <button
+            type="button"
+            className="nes-btn is-primary"
+            onClick={() => navigate("/auth/storeitem")}
+          >
+            List your Item
+          </button>
+
           <button
             type="button"
             className="nes-btn is-primary"

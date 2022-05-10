@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../style/main.css";
 import "nes.css/css/nes.min.css";
-import { useNavigate, Navigate } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate, Navigate, useLocation } from "react-router-dom";
+import ErrorMessage from "./ErrorMessage/ErrorMessage";
+import { useAuth } from "../context/AuthContext";
+import Loading from "./Loading";
+import axios from "axios";
 
 const OfferSent = () => {
   const navigate = useNavigate();
+  const search = useLocation().search;
+  const id = new URLSearchParams(search).get("id");
+
+  const [errorMessage, setErrorMessage] = useState("");
+  const [error, setError] = useState(false);
+  const [sentItems, setSentItems] = useState([]);
+
   /*   const [values, setValues] = useState([2]);
   const [status, setStatus] = useState("is - success");
+
   const [isAccept, setIsAccept] = useState();
 
   const acceptOffer = setIsAccept(true);
@@ -34,6 +45,56 @@ const OfferSent = () => {
   //const modifyOffer =
   //const removeOffer =
 
+  /*   useEffect(() => {
+    if (id) {
+      axios
+        .get(`${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/${id}`)
+        .then((response) => {
+      
+
+          console.log(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [id]); */
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
+    })
+      .then((resSentOffers) => resSentOffers.json())
+      .then((dataSentOffers) => {
+        console.log("Sent: ", dataSentOffers);
+        var arr = [];
+        dataSentOffers.forEach(async (offer, index) => {
+          try {
+            const { data } = await axios.get(
+              `${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/${offer.product}`
+            );
+            data.offer_id = offer._id;
+            arr.push(data);
+            console.log(arr);
+            if (arr.length === dataSentOffers.length) {
+              //setSentItems([]);
+              setSentItems(arr);
+              console.log("Set me to state");
+            }
+          } catch (error) {
+            console.log(error.response?.data.error || error.message);
+            setError(true);
+            setErrorMessage("SOMETHING WENT WRONG !");
+          }
+        });
+      });
+  }, []);
+
+  const deleteOffer = async (id) => {};
+
   return (
     <div className="main-container">
       <div className="nes-container is-centered with-title">
@@ -47,39 +108,39 @@ const OfferSent = () => {
                 src={require("../images/logo.webp")} /* get img */
                 alt="barter pixel art"
               />
-              <div className="infinite-img-x">
-                {/* creare elemento per immagini e collegarlo ad API */}
-              </div>
             </div>
           </div>
-
-          <progress>{/* get progress api */}</progress>
 
           <div className="nes-container is-rounded with-title">
             <h3 className="title"> Description </h3>
             BLA1 BLA2 {/* get description */}
           </div>
-          <select id="default_select">
-            <option value="" disabled="" selected="" hidden="">
-              Select...
-            </option>
-            <option value="0">Cat1</option>
-            <option value="1">Cat2</option>
-          </select>
+          <div className="infinite-img-x">
+            {/*  {items.map((item) => (
+              <div key={item._id} className="infinite-img-x">
+                
+
+                <div
+                  className="nes-container with-title"
+                  id="item-img-container"
+                >
+                  <h3 className="title" id="smallfont">
+                    {item.title}
+                  </h3>
+
+                  <img className="item-img" src={item.image} alt="item img" />
+                </div>
+              </div>
+            ))} */}
+          </div>
+
           <div className="acceptoffer">
             <button
               type="button"
               className="nes-btn is-warning"
-              /* onClick={modifyOffer} */
+              /* onClick={deleteOffer} */
             >
-              Modify
-            </button>
-            <button
-              type="button"
-              className="nes-btn is-error"
-              /* onClick={removeOffer} */
-            >
-              Decline
+              Delete
             </button>
           </div>
         </div>

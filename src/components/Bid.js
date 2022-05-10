@@ -170,9 +170,9 @@ const Bid = () => {
           </div>
           <br />
           <div className="infinite-img-x">
-            <div className="infinite-img-x">
-              {/* personal ITEMS Gallery */}
-              {selectedForBid.map((item) => (
+            {/* personal ITEMS Gallery */}
+            {selectedForBid.map((item) => (
+              <div className="infinite-img-x-marg">
                 <div
                   className="nes-container with-title"
                   id="item-img-container"
@@ -183,10 +183,11 @@ const Bid = () => {
 
                   <img className="item-img" src={item.image} alt="item img" />
                 </div>
-              ))}
-              {/* <button onClick={() => deleteSelectedItem(item._id)}>x</button>  */}
-            </div>
+              </div>
+            ))}
+            {/* <button onClick={() => deleteSelectedItem(item._id)}>x</button>  */}
           </div>
+
           <br />
           {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
           <button
