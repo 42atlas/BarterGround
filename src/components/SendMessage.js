@@ -1,14 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate, useLocation } from "react-router-dom";
+import MageScreaming from "./characters/Merchants/MageScreaming";
 import "../style/main.css";
 import "../style/sendmessage.css";
 import "nes.css/css/nes.min.css";
-import { useNavigate, Navigate } from "react-router-dom";
-import { useState } from "react";
-import Loading from "./Loading";
-import MageScreaming from "./characters/Merchants/MageScreaming";
 
 const SendMessage = () => {
+  const location = useLocation();
   const navigate = useNavigate();
+  const [message, setMessage] = useState(location.state);
+  const [errorMessage, setErrorMessage] = useState("");
+  const handleMessageChange = (e) => {
+    setMessage({
+      ...message,
+      title: e.target.value,
+    });
+  };
+
+  const sendMessage = async () => {
+    const { data, error } = await axios.put(
+      `${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/user/${message.author}`,
+      { message }
+    );
+    if (data) {
+      navigate("/auth/messages", true);
+    } else {
+      setErrorMessage(error);
+    }
+  };
 
   return (
     <div className="main-container">
@@ -19,7 +39,13 @@ const SendMessage = () => {
           <div className="send-msg">
             <MageScreaming />
             <div id="speech-bubble">
-              <p contenteditable="true">MESSAGE GO HERE XD</p>
+              <textArea
+                className="text-area-message"
+                onChange={handleMessageChange}
+                rows={5}
+              >
+                {message.title}
+              </textArea>
             </div>
           </div>
           <div className="main-container">
@@ -27,7 +53,7 @@ const SendMessage = () => {
               type="button"
               className="nes-btn is-success"
               id="smaller-btn"
-              /* onClick={sendMessage} */
+              onClick={sendMessage}
             >
               Send Message
             </button>

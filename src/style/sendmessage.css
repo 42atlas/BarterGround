@@ -80,6 +80,12 @@ p:after {
   position: absolute;
   animation: blink 1000ms infinite;
 }
+.text-area-message {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+}
 
 @keyframes blink {
   0% {

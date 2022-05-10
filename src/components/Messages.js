@@ -49,7 +49,6 @@ const Messages = () => {
       );
       console.log(data);
       setMessages(data);
-      //console.log(data);
     } catch (error) {
       console.log(error.response?.data.error || error.message);
       setError(true);
@@ -69,7 +68,10 @@ const Messages = () => {
             {messages.map((message) => (
               <div key={message._id} className="infinite-msg-y">
                 {/*offered ITEMS Gallery*/}
-                <Link to={`/auth/sendmessage?id=${message._id}`}>
+                <Link
+                  to={`/auth/sendmessage?id=${message._id}`}
+                  state={message}
+                >
                   <div
                     className="nes-container with-title"
                     id="msg-img-container"
