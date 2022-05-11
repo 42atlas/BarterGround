@@ -79,6 +79,8 @@ const Bid = () => {
     user && getItems();
   }, [user]);
 
+  //do offer
+
   const doOffer = async (e) => {
     try {
       e.preventDefault();

@@ -17,7 +17,7 @@ const SendMessage = () => {
       title: e.target.value,
     });
   };
-
+  console.log(message);
   const sendMessage = async () => {
     const { data, error } = await axios.put(
       `${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/user/${message.author}`,
@@ -40,13 +40,18 @@ const SendMessage = () => {
             <div id="fat-container">
               <MageScreaming />
             </div>
-            <div id="speech-bubble">
+            <div id="speech-bubble" onChange={handleMessageChange}>
               <textArea
                 className="text-area-message"
+                /* id="p" */
                 onChange={handleMessageChange}
                 rows={5}
               >
+                {/*  <p contenteditable="true"> */}
                 {message.title}
+                <hr />
+                {message.body}
+                {/* </p> */}
               </textArea>
             </div>
           </div>

@@ -77,9 +77,36 @@ const OfferSent = () => {
   if (isLoading) {
     return <Loading />;
   }
-  const deleteOffer = async (id) => {};
+  const deleteOffer = async () => {
+    try {
+      await axios
+        .delete(`${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/${id}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((response) => {
+          console.log(response);
+        });
+      /* const { data } = await axios.get(
+        `${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/user/${user._id}`
+      );
+      console.log(data);
+      setMessages(data); */
+      navigate(`/auth/offers`);
+    } catch (error) {
+      console.log(error.response?.data.error || error.message);
+      setError(true);
+      setErrorMessage("SOMETHING WENT WRONG !");
+    }
+  };
 
   console.log("offer", offer);
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="main-container">
       <div className="nes-container is-centered with-title" id="landing">
@@ -126,7 +153,7 @@ const OfferSent = () => {
             <button
               type="button"
               className="nes-btn is-error"
-              /* onClick={deleteOffer} */
+              onClick={deleteOffer}
             >
               Delete the Offer
             </button>
