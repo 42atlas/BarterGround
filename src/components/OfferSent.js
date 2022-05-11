@@ -50,16 +50,8 @@ const OfferSent = () => {
       axios
         .get(`${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/${id}`)
         .then(async (response) => {
-          const offeredProductsDetails = await Promise.all(
-            response.data.offeredProducts.map(async (offeredProduct) => {
-              let productDetails = await axios.get(
-                `${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/${offeredProduct}`
-              );
-              return productDetails.data;
-            })
-          );
 
-          setOfferProducts(offeredProductsDetails);
+          setOfferProducts(response.data.offeredProducts);
           return axios.get(
             `${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/${response.data.product}`
           );

@@ -159,7 +159,7 @@ const Settings = () => {
                 id="character"
                 value={character || user.character}
                 onChange={handleChange}
-                /* character={character} */
+              /* character={character} */
               >
                 <option value="" disabled="" hidden="yes">
                   Select Character

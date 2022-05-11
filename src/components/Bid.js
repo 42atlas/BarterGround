@@ -92,6 +92,7 @@ const Bid = () => {
         `${process.env.REACT_APP_BARTERGROUND_API_URL}/offers`,
         {
           owner,
+          initiator: user._id,
           product: id,
           offeredProducts: selectedForBid.map((prod) => prod._id),
         },
@@ -166,9 +167,10 @@ const Bid = () => {
           <br />
           <label>Select one or more Items to add to the offer</label>
           <div className="nes-select">
-            <select id="item" onChange={handleInputItem}>
+            <select id="item" onChange={handleInputItem} >
+              <option value="" disabled="" selected="" hidden="yes">Select...</option>
               {items.map((item, index) => (
-                <option key={index} value={index}>
+                <option key={index} value={index} >
                   {item.title}
                 </option>
               ))}

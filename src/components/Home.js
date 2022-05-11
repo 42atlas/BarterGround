@@ -19,11 +19,11 @@ import Loading from "./Loading";
 import { useAuth } from "../context/AuthContext";
 
 const Home = () => {
-  const [messages, setMessages] = useState(0);
-  const [offers, setOffers] = useState(0);
+  const [messages, setMessages] = useState("");
+  const [offers, setOffers] = useState("");
 
-  const [alertMessages, setAlertMessages] = useState("nes-text is-disabled");
-  const [alertOffers, setAlertOffers] = useState("nes-text is-disabled");
+  const [alertMessages, setAlertMessages] = useState("");
+  const [alertOffers, setAlertOffers] = useState("");
 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -32,6 +32,60 @@ const Home = () => {
   const { user } = useAuth();
 
   //set all + api call | alert |class="nes-text is-warning"| id="blinking"
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/received`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
+    })
+      .then((resReceivedOffers) => resReceivedOffers.json())
+      .then((dataReceivedOffers) => {
+        console.log("Received offers: ", dataReceivedOffers);
+        setOffers(dataReceivedOffers.length);
+        console.log(offers)
+
+      });
+  }, []);
+
+  useEffect(() => {
+    if (offers === 0) setAlertOffers("nes-text is-disabled");
+    if (offers > 0) setAlertOffers("blinking");
+  }, [offers])
+
+  useEffect(() => {
+
+    fetch(`${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
+    })
+      .then((resReceivedMessages) => resReceivedMessages.json())
+      .then((dataReceivedMessages) => {
+        console.log("Received messages: ", dataReceivedMessages);
+        setMessages(dataReceivedMessages.length);
+        console.log(messages);
+
+      });
+  }, []);
+
+  useEffect(() => {
+    if (messages === 0) setAlertMessages("nes-text is-disabled");
+    if (messages > 0) setAlertMessages("blinking");
+  }, [messages])
+
+  /*   const alertoffers = () => {
+      if (offers === 0) { setAlertOffers("nes-text is-disabled") }
+      else if (offers !== 0) { setAlertOffers("blinking") }
+    };
+  
+    const alertmessages = () => {
+      if (messages === 0) { setAlertMessages("nes-text is-disabled") }
+      else if (messages !== 0) { setAlertMessages("blinking") }
+    };
+   */
+
 
   const renderCharacter = (character) => {
     switch (character) {
@@ -64,8 +118,12 @@ const Home = () => {
     }
   };
 
-  if (loading) return <Loading />;
 
+
+
+
+
+  if (loading) return <Loading />;
   return (
     user && (
       <div className="main-container">
@@ -81,8 +139,8 @@ const Home = () => {
                 id="alert"
                 onClick={() => navigate("/auth/offers")}
               >
-                <span class={alertOffers} /* id="blinking" */>
-                  {/* {offers} */} New Offers!!
+                <span className={alertOffers} >
+                  {offers} New Offers!!
                 </span>
                 {/* THIS */}
               </div>
@@ -93,7 +151,7 @@ const Home = () => {
                 onClick={() => navigate("/auth/messages")}
               >
                 <span className={alertMessages}>
-                  {/* {messages} */} New Messages!!
+                  {messages} New Messages!!
                 </span>
                 {/* THIS */}
               </div>
