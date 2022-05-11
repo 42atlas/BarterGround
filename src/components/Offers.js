@@ -101,14 +101,21 @@ const Offers = () => {
     })
       .then((resReceivedOffers) => resReceivedOffers.json())
       .then((dataReceivedOffers) => {
-        dataReceivedOffers.forEach(async (offer) => {
+        console.log("Received: ", dataReceivedOffers);
+        var arra = [];
+        dataReceivedOffers.forEach(async (offer, index) => {
           try {
             const { data } = await axios.get(
               `${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/${offer.product}`
             );
             data.offer_id = offer._id;
-            setRecItems([...recItems, data]);
-            console.log(recItems);
+            arra.push(data);
+            console.log(arra);
+            if (arra.length === dataReceivedOffers.length) {
+              /* setRecItems([...recItems, data]); */
+              setRecItems(arra);
+              console.log("Set me to state");
+            }
           } catch (error) {
             console.log(error.response?.data.error || error.message);
             setError(true);

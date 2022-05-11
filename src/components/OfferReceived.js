@@ -70,6 +70,64 @@ const OfferReceived = () => {
         });
     }
   }, [id]);
+
+  const declineOffer = async () => {
+    try {
+      await axios
+        .delete(`${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/${id}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((response) => {
+          console.log(response);
+        });
+      /* const { data } = await axios.get(
+        `${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/user/${user._id}`
+      );
+      console.log(data);
+      setMessages(data); */
+      navigate(`/auth/offers`);
+    } catch (error) {
+      console.log(error.response?.data.error || error.message);
+      setError(true);
+      setErrorMessage("SOMETHING WENT WRONG !");
+    }
+  };
+
+  const acceptOffer = async () => {
+    try {
+      await axios
+        .post(`${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/${id}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+
+        .delete(`${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/${id}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((response) => {
+          axios.post(`${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/`);
+          console.log(response);
+        });
+      /* const { data } = await axios.get(
+        `${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/user/${user._id}`
+      );
+      console.log(data);
+      setMessages(data); */
+    } catch (error) {
+      console.log(error.response?.data.error || error.message);
+      setError(true);
+      setErrorMessage("SOMETHING WENT WRONG !");
+    }
+  };
+
   if (isLoading) {
     return <Loading />;
   }
@@ -119,14 +177,14 @@ const OfferReceived = () => {
           <button
             type="button"
             className="nes-btn is-success"
-            /* onClick={setIsOffer(true)} */
+            onClick={acceptOffer}
           >
             Accept
           </button>
           <button
             type="button"
             className="nes-btn is-error"
-            /*  onClick={setIsOffer(false)} */
+            onClick={declineOffer}
           >
             Decline
           </button>

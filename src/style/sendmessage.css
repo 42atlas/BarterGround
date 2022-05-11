@@ -85,6 +85,7 @@ p:after {
   background-color: transparent;
   resize: none;
   outline: none;
+  display: flex;
 }
 
 @keyframes blink {
