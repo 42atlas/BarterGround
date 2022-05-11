@@ -11,6 +11,7 @@ const OfferReceived = () => {
   const navigate = useNavigate();
   const search = useLocation().search;
   const [post, setPost] = useState(null);
+  const [offerData, setOfferData] = useState(null)
   const [offerProducts, setOfferProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -45,17 +46,10 @@ const OfferReceived = () => {
     if (id) {
       axios
         .get(`${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/${id}`)
-        .then(async (response) => {
-          const offeredProductsDetails = await Promise.all(
-            response.data.offeredProducts.map(async (offeredProduct) => {
-              let productDetails = await axios.get(
-                `${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/${offeredProduct}`
-              );
-              return productDetails.data;
-            })
-          );
-
-          setOfferProducts(offeredProductsDetails);
+        .then((response) => {
+          const { offeredProducts, ...rest } = response.data
+          setOfferProducts(offeredProducts);
+          setOfferData(rest)
           return axios.get(
             `${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/${response.data.product}`
           );
@@ -99,23 +93,27 @@ const OfferReceived = () => {
   const acceptOffer = async () => {
     try {
       await axios
-        .post(`${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/${id}`, {
+        .post(`${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/user/${offerData.initiator}`, {
+          title: 'Offer accepted', body: `Your offer for ${post.title} was accepted for ${offerProducts.map(p => p.title).join(', ')}`
+        }, {
           headers: {
             "Content-Type": "application/json",
             Authorization: localStorage.getItem("token"),
           },
-        })
+        }).then(() => {
 
-        .delete(`${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/${id}`, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
-          },
-        })
-        .then((response) => {
-          axios.post(`${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/`);
-          console.log(response);
+          axios.delete(`${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/${id}`, {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: localStorage.getItem("token"),
+            },
+          })
         });
+      navigate(`/auth/home`);
+      /* .then((response) => {
+        axios.post(`${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/`);
+        console.log(response);
+      }); */
       /* const { data } = await axios.get(
         `${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/user/${user._id}`
       );
@@ -157,7 +155,7 @@ const OfferReceived = () => {
           <br />
           <div className="infinite-img-x">
             {offerProducts.map((item) => (
-              <div key={item._id} className="infinite-img-x">
+              <div key={item._id} className="infinite-img-x-marg">
                 <div
                   className="nes-container with-title"
                   id="item-img-container"

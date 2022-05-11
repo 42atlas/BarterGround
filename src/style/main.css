@@ -387,11 +387,13 @@ button {
     color: cyan;
   }
 }
-#blinking {
+.blinking {
   width: 200px;
   height: 200px;
   animation: blinking 0.4s infinite;
 }
+
+
 
 #is-error {
   color: #ce372b;
