@@ -48,8 +48,7 @@ const SendMessage = () => {
                 rows={5}
               >
                 {/*  <p contenteditable="true"> */}
-                {message.title}
-                <hr />
+
                 {message.body}
                 {/* </p> */}
               </textArea>

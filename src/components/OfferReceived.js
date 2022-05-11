@@ -6,12 +6,13 @@ import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import { useAuth } from "../context/AuthContext";
 import Loading from "./Loading";
 import axios from "axios";
+import OldManPointing from "./characters/OldMan/OldManPointing";
 
 const OfferReceived = () => {
   const navigate = useNavigate();
   const search = useLocation().search;
   const [post, setPost] = useState(null);
-  const [offerData, setOfferData] = useState(null)
+  const [offerData, setOfferData] = useState(null);
   const [offerProducts, setOfferProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -47,9 +48,9 @@ const OfferReceived = () => {
       axios
         .get(`${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/${id}`)
         .then((response) => {
-          const { offeredProducts, ...rest } = response.data
+          const { offeredProducts, ...rest } = response.data;
           setOfferProducts(offeredProducts);
-          setOfferData(rest)
+          setOfferData(rest);
           return axios.get(
             `${process.env.REACT_APP_BARTERGROUND_API_URL}/posts/${response.data.product}`
           );
@@ -93,21 +94,31 @@ const OfferReceived = () => {
   const acceptOffer = async () => {
     try {
       await axios
-        .post(`${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/user/${offerData.initiator}`, {
-          title: 'Offer accepted', body: `Your offer for ${post.title} was accepted for ${offerProducts.map(p => p.title).join(', ')}`
-        }, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
+        .post(
+          `${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/user/${offerData.initiator}`,
+          {
+            title: "Offer accepted",
+            body: `Your offer for ${post.title} was accepted for ${offerProducts
+              .map((p) => p.title)
+              .join(", ")}`,
           },
-        }).then(() => {
-
-          axios.delete(`${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/${id}`, {
+          {
             headers: {
               "Content-Type": "application/json",
               Authorization: localStorage.getItem("token"),
             },
-          })
+          }
+        )
+        .then(() => {
+          axios.delete(
+            `${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/${id}`,
+            {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: localStorage.getItem("token"),
+              },
+            }
+          );
         });
       navigate(`/auth/home`);
       /* .then((response) => {
@@ -171,22 +182,29 @@ const OfferReceived = () => {
           </div>
           <br />
         </div>
-        <div className="flexibutton">
-          <button
-            type="button"
-            className="nes-btn is-success"
-            onClick={acceptOffer}
-          >
-            Accept
-          </button>
-          <button
-            type="button"
-            className="nes-btn is-error"
-            onClick={declineOffer}
-          >
-            Decline
-          </button>
+        {/* <div className="flexibutton"> */}
+        <div className="flexi-button-old-man">
+          <div className="char-near-button">
+            <button
+              type="button"
+              className="nes-btn is-success"
+              onClick={acceptOffer}
+            >
+              Accept
+            </button>
+            <OldManPointing />
+          </div>
+          <div>
+            <button
+              type="button"
+              className="nes-btn is-error"
+              onClick={declineOffer}
+            >
+              Decline
+            </button>
+          </div>
         </div>
+        {/* </div> */}
       </div>
       <div className="nes-container is-centered" id="landing">
         <div className="buttons-container">
