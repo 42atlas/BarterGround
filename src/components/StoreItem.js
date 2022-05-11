@@ -164,13 +164,14 @@ const StoreItem = () => {
         <div className="main-container">
           <div className="nes-container is-rounded">
             <div className="storeitem-img">
-              {image ? (
-                <img className="item-img" src={image} alt="Item" />
-              ) : (
-                <Ocarina />
-              )}
-              <br />
-
+              <div className="storeitem-img">
+                {image ? (
+                  <img className="item-img" src={image} alt="Item" />
+                ) : (
+                  <Ocarina />
+                )}
+                <br />
+              </div>
               <label className="nes-btn">
                 <span>Upload your Image</span>
                 <input type="file" onChange={handleFileChange} />
