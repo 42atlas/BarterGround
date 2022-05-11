@@ -106,7 +106,7 @@
       14 0,
     pointer;
 
-  max-height: 193.2px;
+  max-height: 350.2px;
   width: auto;
   align-items: baseline;
 }
@@ -393,8 +393,6 @@ button {
   animation: blinking 0.4s infinite;
 }
 
-
-
 #is-error {
   color: #ce372b;
   cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
@@ -427,4 +425,17 @@ button {
 
 .blockbox {
   display: block;
+}
+
+.flexi-button-old-man {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 67px;
+}
+
+.char-near-button {
+  display: flex;
+  align-items: center;
 }

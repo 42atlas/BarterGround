@@ -20,7 +20,7 @@ const Messages = () => {
     const getMessages = async () => {
       try {
         const { data } = await axios.get(
-          `${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/user/${user._id}`
+          `${process.env.REACT_APP_BARTERGROUND_API_URL}/messages`
         );
         console.log(data);
         setMessages(data);
@@ -72,13 +72,7 @@ const Messages = () => {
                   to={`/auth/sendmessage?id=${message._id}`}
                   state={message}
                 >
-                  <div
-                    className="nes-container with-title"
-                    id="msg-img-container"
-                  >
-                    <h3 className="title" id="smallfont">
-                      {message.title}
-                    </h3>
+                  <div className="nes-container " id="msg-img-container">
                     {message.body}
                   </div>
                 </Link>

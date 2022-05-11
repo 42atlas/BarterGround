@@ -68,3 +68,37 @@ body {
     transform: translate3d(-40%, 0, 0);
   }
 }
+
+/* old man pointing */
+
+.Character_oldmanpointing {
+  width: calc(15px * var(--pixel-size));
+  height: calc(11px * var(--pixel-size));
+  overflow: hidden;
+  position: absolute;
+  margin: auto;
+  /*  background: red; */
+  transform: scaleX(-1);
+  left: calc(22px * var(--pixel-size));
+  /* top: calc(-30px * var(--pixel-size)); */
+}
+
+.Character_spritesheet_oldmanpointing {
+  animation: moveSpritesheetoldmanpointing 2s steps(11) infinite;
+  width: calc(200px * var(--pixel-size));
+  position: absolute;
+}
+
+.oldmanpointing {
+  left: calc(-1.8px * var(--pixel-size));
+  top: calc(-30px * var(--pixel-size));
+}
+
+@keyframes moveSpritesheetoldmanpointing {
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-73.4%, 0, 0);
+  }
+}
