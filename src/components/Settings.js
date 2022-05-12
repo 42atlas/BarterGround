@@ -126,7 +126,7 @@ const Settings = () => {
             <br></br>
             <div className="nes-field">
               <label htmlFor="email" className="form-label">
-                Change email:
+                Your email:
               </label>
               <input
                 type="email"
@@ -154,6 +154,7 @@ const Settings = () => {
             </div>
             <br />
             <br />
+            Change Character:
             <div className="nes-select">
               <select
                 id="character"
