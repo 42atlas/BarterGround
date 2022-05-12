@@ -51,7 +51,7 @@ const Register = () => {
     }));
     setSelected(
       e.target.getAttribute("character") ||
-        e.target.parentNode.parentNode.getAttribute("character")
+      e.target.parentNode.parentNode.getAttribute("character")
     );
   };
 
@@ -60,7 +60,7 @@ const Register = () => {
     if (!name || !email || !password || !character)
       return (
         setError(true),
-        setErrorMessage("YOU MUST PICK A CHARACTER AND FILL IN YOUR DATA !"),
+        setErrorMessage("NO NO NO YOU MUST PICK A CHARACTER AND FILL IN YOUR DATA !"),
         setClassField("nes-input is-error")
       );
     await registerUser({ name, email, password, character });
