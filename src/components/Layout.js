@@ -24,7 +24,7 @@ const Layout = () => {
           <button
             type="text"
             className="nes-btn is-warning"
-            id="small-margin"
+            id="small-margin-quit"
             onClick={logout}
           >
             QUIT

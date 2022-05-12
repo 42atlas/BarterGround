@@ -33,7 +33,7 @@ const Loading = () => {
         >
           <BoyRunning />
         </motion.div>
-        loading ...
+
       </div>
     </>
   );

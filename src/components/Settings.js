@@ -153,7 +153,7 @@ const Settings = () => {
               />
             </div>
             <br />
-            <br />
+
             Change Character:
             <div className="nes-select">
               <select
