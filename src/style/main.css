@@ -2,8 +2,14 @@
   font-family: "Press Start 2P", cursive;
 }
 
-/* @media screen and (max-width: 480px) {
-  .nes-container {
+@media screen and (max-width: 480px) {
+  #minus-margin-top-round {
+    border-width: 0 !important;
+  }
+  #margin-top-round {
+    border-width: 0 !important;
+  }
+  /* .nes-container {
     width: 360px;
     height: 820px;
   }
@@ -13,9 +19,9 @@
     align-items: center;
     align-self: center;
     align-content: center;
-  }
+  }*/
 }
-
+/*
 @media screen and (max-width: 768px) and (min-width: 481px) {
   .nes-container {
     width: 700px;
