@@ -319,7 +319,7 @@ h3 {
 
 #small-margin-quit {
   margin: 10px;
-  width:100px;
+  width:100px !important;
   font-size: smaller;
 }
 
