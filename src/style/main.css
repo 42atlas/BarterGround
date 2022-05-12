@@ -317,6 +317,12 @@ h3 {
   margin: 10px;
 }
 
+#small-margin-quit {
+  margin: 10px;
+  width:auto;
+  font-size: smaller;
+}
+
 #smallfont {
   font-size: 11px;
 }
@@ -366,6 +372,7 @@ h3 {
 button {
   min-width: 150px;
 }
+
 
 @keyframes blinking {
   0% {
