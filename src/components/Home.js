@@ -26,10 +26,10 @@ const Home = () => {
   const [alertOffers, setAlertOffers] = useState("");
 
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
 
   //set all + api call | alert |class="nes-text is-warning"| id="blinking"
   useEffect(() => {
@@ -43,18 +43,16 @@ const Home = () => {
       .then((dataReceivedOffers) => {
         console.log("Received offers: ", dataReceivedOffers);
         setOffers(dataReceivedOffers.length);
-        console.log(offers)
-
+        console.log(offers);
       });
   }, []);
 
   useEffect(() => {
     if (offers === 0) setAlertOffers("nes-text is-disabled");
     if (offers > 0) setAlertOffers("blinking");
-  }, [offers])
+  }, [offers]);
 
   useEffect(() => {
-
     fetch(`${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/`, {
       headers: {
         "Content-Type": "application/json",
@@ -66,14 +64,13 @@ const Home = () => {
         console.log("Received messages: ", dataReceivedMessages);
         setMessages(dataReceivedMessages.length);
         console.log(messages);
-
       });
   }, []);
 
   useEffect(() => {
     if (messages === 0) setAlertMessages("nes-text is-disabled");
     if (messages > 0) setAlertMessages("blinking");
-  }, [messages])
+  }, [messages]);
 
   /*   const alertoffers = () => {
       if (offers === 0) { setAlertOffers("nes-text is-disabled") }
@@ -85,7 +82,6 @@ const Home = () => {
       else if (messages !== 0) { setAlertMessages("blinking") }
     };
    */
-
 
   const renderCharacter = (character) => {
     switch (character) {
@@ -118,11 +114,6 @@ const Home = () => {
     }
   };
 
-
-
-
-
-
   if (loading) return <Loading />;
   return (
     user && (
@@ -139,9 +130,7 @@ const Home = () => {
                 id="alert"
                 onClick={() => navigate("/auth/offers")}
               >
-                <span className={alertOffers} >
-                  {offers} New Offers!!
-                </span>
+                <span className={alertOffers}>{offers} New Offers!!</span>
                 {/* THIS */}
               </div>
 
@@ -150,9 +139,7 @@ const Home = () => {
                 id="alert"
                 onClick={() => navigate("/auth/messages")}
               >
-                <span className={alertMessages}>
-                  {messages} New Messages!!
-                </span>
+                <span className={alertMessages}>{messages} New Messages!!</span>
                 {/* THIS */}
               </div>
             </div>
