@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import "../style/main.css";
+import "nes.css/css/nes.min.css";
 
 // Import your audio file
 import song from "../audio/BattleSong.wav";
@@ -34,7 +36,7 @@ class Player extends Component {
     return (
       <div>
         {/* Button to call our main function */}
-        <button onClick={this.playPause}>
+        <button onClick={this.playPause} className="nes-btn is-success">
           {this.state.isPlaying ? "PAUSE" : "PLAY"}
         </button>
       </div>
