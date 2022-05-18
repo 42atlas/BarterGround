@@ -280,7 +280,7 @@ h3 {
 .send-msg {
   display: flex;
   flex-direction: row;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap-reverse;
   /* justify-content: space-evenly; */
 }
 
@@ -325,7 +325,7 @@ h3 {
 
 #small-margin-quit {
   margin: 10px;
-  width:100px !important;
+  width: 100px !important;
   font-size: smaller;
 }
 
@@ -378,7 +378,6 @@ h3 {
 button {
   min-width: 150px;
 }
-
 
 @keyframes blinking {
   0% {
@@ -451,4 +450,25 @@ button {
 .char-near-button {
   display: flex;
   align-items: center;
+}
+
+#bubble-send {
+  width: auto;
+  height: auto;
+  align-self: flex-end;
+  align-content: center;
+  justify-content: center;
+  /* margin: 100px 0; */
+}
+
+#reply-area {
+  display: flex !important;
+  flex-direction: column;
+  align-self: stretch !important;
+}
+
+.reply-textarea {
+  resize: vertical;
+  overflow: hidden;
+  height: fit-content;
 }

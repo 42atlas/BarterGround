@@ -98,7 +98,7 @@ const OfferReceived = () => {
           `${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/user/${offerData.initiator}`,
           {
             title: "Offer accepted",
-            body: `Your offer for ${post.title} was accepted for ${offerProducts
+            body: `The offer for ${post.title} was accepted for ${offerProducts
               .map((p) => p.title)
               .join(", ")}`,
           },

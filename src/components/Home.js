@@ -17,6 +17,7 @@ import OldManHome from "./characters/OldMan/OldManhome";
 import VillageGirlHome from "./characters/VillageGirl/VillageGirlhome";
 import Loading from "./Loading";
 import { useAuth } from "../context/AuthContext";
+import axios from "axios";
 
 const Home = () => {
   const [messages, setMessages] = useState("");
@@ -32,6 +33,7 @@ const Home = () => {
   const { user, loading } = useAuth();
 
   //set all + api call | alert |class="nes-text is-warning"| id="blinking"
+
   useEffect(() => {
     fetch(`${process.env.REACT_APP_BARTERGROUND_API_URL}/offers/received`, {
       headers: {
@@ -53,7 +55,7 @@ const Home = () => {
   }, [offers]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/`, {
+    fetch(`${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/received`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: localStorage.getItem("token"),
