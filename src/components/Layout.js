@@ -16,7 +16,7 @@ const Layout = () => {
           className="nav-link"
           id="small-margin"
         >
-          {user ? `Welcome back, ${user.character} ${user.name}` : "v.0.1.9"}
+          {user ? `Welcome back, ${user.character} ${user.name}` : "v.0.2.1"}
         </NavLink>
         <br />
 

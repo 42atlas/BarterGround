@@ -140,7 +140,7 @@ body {
   /* margin: 55px auto 0 auto; */
   /* background: red; */
   margin-bottom: 50px;
-  top: calc(15px * var(--pixel-size));
+  top: calc(4px * var(--pixel-size));
 }
 
 .Character_spritesheet_magescreaming {
