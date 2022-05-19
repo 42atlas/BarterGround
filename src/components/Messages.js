@@ -157,18 +157,19 @@ const Messages = () => {
             <div className="infinite-msg-y">
               {sentMessages.map((message) => (
                 <div key={message._id} className="infinite-msg-y">
-                  <Link
-                    to={`/auth/sendmessage?id=${message._id}`}
-                    state={message}
+                  <div
+                    className="nes-container with-title"
+                    id="msg-img-container"
                   >
-                    <div
-                      className="nes-container with-title"
-                      id="msg-img-container"
+                    <h3 className="title"> {message.title} </h3>
+                    <Link
+                      to={`/auth/sendmessage?id=${message._id}`}
+                      state={message}
                     >
-                      <h3 className="title"> {message.title} </h3>
                       {message.body}
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
+
                   <span
                     id="is-error"
                     onClick={() => deleteSelectedMessage(message._id)}

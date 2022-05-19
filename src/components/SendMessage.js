@@ -32,6 +32,8 @@ const SendMessage = () => {
   const handleMessageChange = (e) =>
     setFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 
+  console.log({ reply });
+
   useEffect(() => {
     if (id) {
       axios
@@ -65,13 +67,15 @@ const SendMessage = () => {
       //   fileObj = await getFileFromUrl(image, image.split("/").pop());
       // }
 
-      const formData = new FormData();
-      formData.append("title", title);
-      formData.append("body", `${body} <br /> ${reply}`);
+      const data = {
+        title,
+        subject: `${body} <br/> ${reply}`,
+      };
+
       /* formData.append("body", reply); */
       await axios.put(
         `${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/${id}`,
-        formData,
+        { data: JSON.stringify(data) },
         {
           headers: {
             "Content-Type": "application/json",
@@ -131,9 +135,11 @@ const SendMessage = () => {
             <label for="textarea_field">Reply Here</label>
             <TextareaAutosize
               id="reply"
+              name="reply"
               class="nes-textarea reply-textarea"
               spellcheck="false"
               value={reply}
+              /* dangerouslySetInnerHTML={{ __html: reply }} */
               onChange={handleMessageChange}
               wrap="hard"
               placeholder="Dear Friend, lets organize the shipment, here is my phone number, call me..."
