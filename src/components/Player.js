@@ -36,9 +36,9 @@ class Player extends Component {
     return (
       <div>
         {/* Button to call our main function */}
-        <button onClick={this.playPause} className="nes-btn is-success">
-          {this.state.isPlaying ? "PAUSE" : "PLAY"}
-        </button>
+        {/* <button onClick={this.playPause} className="nes-btn is-success"> */}
+        MUSIC IS: {this.state.isPlaying ? "OFF" : "ON"}
+        {/* </button> */}
       </div>
     );
   }
