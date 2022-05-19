@@ -34,11 +34,12 @@ class Player extends Component {
 
   render() {
     return (
-      <div onClick={this.playPause}>
+      <div>
         {/* Button to call our main function */}
-        {/* <button onClick={this.playPause} className="nes-btn is-success"> */}
-        MUSIC IS: {this.state.isPlaying ? "OFF" : "ON"}
-        {/* </button> */}
+        MUSIC IS:
+        <button onClick={this.playPause}>
+          {this.state.isPlaying ? "ON" : "OFF"}
+        </button>
       </div>
     );
   }
