@@ -67,9 +67,10 @@ const SendMessage = () => {
 
       const formData = new FormData();
       formData.append("title", title);
-      formData.append("body", body);
+      formData.append("body", `${body} <br /> ${reply}`);
+      /* formData.append("body", reply); */
       await axios.put(
-        `${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/message/${id}`,
+        `${process.env.REACT_APP_BARTERGROUND_API_URL}/messages/${id}`,
         formData,
         {
           headers: {
@@ -78,7 +79,9 @@ const SendMessage = () => {
           },
         }
       );
+
       navigate(`/auth/messages`);
+      console.log(body);
     } catch (error) {
       console.log(error);
       return setError(true), setErrorMessage("SOMETHING IS WRONG !");
@@ -127,7 +130,7 @@ const SendMessage = () => {
           <div id="reply-area" class="item">
             <label for="textarea_field">Reply Here</label>
             <TextareaAutosize
-              id="textarea_field"
+              id="reply"
               class="nes-textarea reply-textarea"
               spellcheck="false"
               value={reply}
