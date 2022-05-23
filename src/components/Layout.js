@@ -20,11 +20,7 @@ const Layout = () => {
           {user ? `Welcome back, ${user.character} ${user.name}` : "v.0.2.1"}
         </NavLink>
         <br />
-        <CookieBanner
-          message="We use only one cookie. We need it to authenticate your account when you login!"
-          onAccept={() => {}}
-          cookie="user-has-accepted-cookies"
-        />
+
         {isAuthenticated ? (
           <button
             type="text"
@@ -40,6 +36,11 @@ const Layout = () => {
       </div>
 
       <Outlet />
+      <CookieBanner
+        message="We use only one cookie. We need it to authenticate your account when you login!"
+        onAccept={() => {}}
+        cookie="user-has-accepted-cookies"
+      />
       <div className="main-container">
         <ButtonContact />
 
