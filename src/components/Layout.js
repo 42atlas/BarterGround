@@ -37,7 +37,7 @@ const Layout = () => {
 
       <Outlet />
       <CookieBanner
-        message="We use only one cookie. We need it to authenticate your account when you login!"
+        message="We use only one cookie."
         onAccept={() => {}}
         cookie="user-has-accepted-cookies"
       />
