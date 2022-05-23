@@ -5,6 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import ButtonContact from "./ButtonContact";
 import Player from "./Player";
+import CookieBanner from "react-cookie-banner";
 
 const Layout = () => {
   const { isAuthenticated, user, logout } = useAuth();
@@ -19,7 +20,11 @@ const Layout = () => {
           {user ? `Welcome back, ${user.character} ${user.name}` : "v.0.2.1"}
         </NavLink>
         <br />
-
+        <CookieBanner
+          message="We use only one cookie. We need it to authenticate your account when you login!"
+          onAccept={() => {}}
+          cookie="user-has-accepted-cookies"
+        />
         {isAuthenticated ? (
           <button
             type="text"
@@ -39,6 +44,9 @@ const Layout = () => {
         <ButtonContact />
 
         <Player />
+        <NavLink to={`/impressum`} className="nav-link" id="small-margin-imp">
+          Impressum - Privacy & Data
+        </NavLink>
       </div>
     </>
   );
