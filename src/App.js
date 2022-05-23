@@ -18,6 +18,7 @@ import Settings from "./components/Settings";
 import AuthState from "./context/AuthContext";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Impressum from "./components/Impressum";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="impressum" element={<Impressum />} />
           <Route path="auth" element={<ProtectedRoute />}>
             <Route path="home" element={<Home />} />
             <Route path="items" element={<Items />} />
