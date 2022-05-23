@@ -54,6 +54,8 @@ const SendMessage = () => {
     }
   }, [id]);
 
+  const br = `==>`;
+
   const sendMessage = async (e) => {
     try {
       e.preventDefault();
@@ -69,7 +71,7 @@ const SendMessage = () => {
 
       const data = {
         title,
-        subject: `${body} <br/> ${reply}`,
+        subject: `${body} ${br} ${reply}`,
       };
 
       /* formData.append("body", reply); */
