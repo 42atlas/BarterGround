@@ -1,7 +1,7 @@
 import React from "react";
 import "../style/main.css";
 import "nes.css/css/nes.min.css";
-import { useNavigate, Navigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Loading from "./Loading";
 import { useAuth } from "../context/AuthContext";
@@ -10,15 +10,12 @@ import axios from "axios";
 
 const Messages = () => {
   const navigate = useNavigate();
-  const [messages, setMessages] = useState([]);
 
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const { user, loading } = useAuth();
   const [receivedMessages, setReceivedMessages] = useState([]);
   const [sentMessages, setSentMessages] = useState([]);
-  const [receivedMessagesLenght, setReceivedMessagesLength] = useState("");
-  const [sentMessagesLenght, setSentMessagesLength] = useState("");
 
   /*   useEffect(() => {
     const getMessages = async () => {
