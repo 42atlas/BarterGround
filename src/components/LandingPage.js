@@ -6,12 +6,12 @@ import "nes.css/css/nes.min.css";
 
 const LandingPage = () => {
   const { isAuthenticated } = useAuth();
-  const navigate = useNavigate()
-  if (isAuthenticated) return <Navigate to='/auth/home' replace />;
+  const navigate = useNavigate();
+  if (isAuthenticated) return <Navigate to="/auth/home" replace />;
   return (
     <div className="main-container">
       <div className="nes-container is-centered with-title" id="landing">
-        <h3 className="title"> BarterGround </h3>
+        <h1 className="title"> BarterGround </h1>
         <div className="internal-container">
           <img
             className="main-img"
