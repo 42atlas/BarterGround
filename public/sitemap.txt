@@ -1,0 +1,16 @@
+https://www.barterground.org/
+https://www.barterground.org/register
+https://www.barterground.org/login
+https://www.barterground.org/contact
+https://www.barterground.org/impressum
+https://www.barterground.org/auth/home
+https://www.barterground.org/auth/items
+https://www.barterground.org/auth/storeitem
+https://www.barterground.org/auth/exchange
+https://www.barterground.org/auth/messages
+https://www.barterground.org/auth/sendmessage
+https://www.barterground.org/auth/bid
+https://www.barterground.org/auth/offers
+https://www.barterground.org/auth/offerreceived
+https://www.barterground.org/auth/offersent
+https://www.barterground.org/auth/settings/:id
